@@ -5,7 +5,7 @@ export default function App() {
     window.alert("Good dog!");
   };
 
-  const gifSrc = "images/favicon.gif";
+  const gifSrc = "images/logo.gif";
 
   const [isHovering, setIsHovering] = useState(false);
   const [staticFrame, setStaticFrame] = useState<string | null>(null);
@@ -39,7 +39,7 @@ export default function App() {
       <canvas ref={canvasRef} className="hidden" />
       <a href="google.com">
         <img
-          className="rounded-full w-18 cursor-pointer"
+          className="rounded-full w-20 md:w-50 cursor-pointer"
           src={isHovering ? gifSrc : staticFrame || gifSrc}
           alt="favicon"
           onMouseEnter={() => setIsHovering(true)}

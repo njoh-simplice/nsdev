@@ -65,26 +65,32 @@ export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const { pathname } = useLocation();
 
-  // Close the mobile menu on route change...
+  // Close the mobile menu on route change.
   useEffect(() => {
     setMenuOpen(false);
   }, [pathname]);
 
-  // ...and on Escape while it's open.
+  // While the mobile menu is open: Escape closes it, and the page behind it
+  // stops scrolling.
   useEffect(() => {
     if (!menuOpen) return;
     const onKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") setMenuOpen(false);
     };
     window.addEventListener("keydown", onKeyDown);
-    return () => window.removeEventListener("keydown", onKeyDown);
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      window.removeEventListener("keydown", onKeyDown);
+      document.body.style.overflow = previousOverflow;
+    };
   }, [menuOpen]);
 
   return (
-    <header className="bg-brand-cream mx-2.5 mt-2 rounded-sm">
-      <nav className="flex items-center justify-between px-3 py-3">
+    <header className="sticky top-2 z-50 mx-2.5 mt-2 rounded-sm bg-brand-cream">
+      <nav className="relative z-50 flex items-center justify-between rounded-sm bg-brand-cream px-3 py-3">
         <Link to="/" aria-label="NSDEV home" className={focusRing}>
-          <AnimatedLogo className="w-12 md:w-16 rounded-sm" />
+          <AnimatedLogo className="w-12 rounded-sm md:w-16" />
         </Link>
 
         {/* Desktop: full nav inline */}
@@ -106,15 +112,28 @@ export default function Header() {
         </button>
       </nav>
 
-      {/* Mobile: expanded menu */}
+      {/* Mobile: menu overlays the page (absolute, so it doesn't push content);
+          the page behind is dimmed and scroll-locked. */}
       {menuOpen && (
-        <div id="mobile-menu" className="px-3 pb-4 md:hidden">
-          <NavItems
-            className="flex flex-col gap-3 text-brand-black"
-            onNavigate={() => setMenuOpen(false)}
+        <>
+          <button
+            type="button"
+            aria-label="Close menu"
+            tabIndex={-1}
+            className="fixed inset-0 z-40 cursor-default bg-brand-black/40 md:hidden"
+            onClick={() => setMenuOpen(false)}
           />
-          <CoffeeButton className="mt-4 w-full" />
-        </div>
+          <div
+            id="mobile-menu"
+            className="absolute inset-x-0 top-full z-50 mt-2 rounded-sm bg-brand-cream p-6 shadow-xl md:hidden"
+          >
+            <NavItems
+              className="flex flex-col gap-4 text-brand-black"
+              onNavigate={() => setMenuOpen(false)}
+            />
+            <CoffeeButton className="mt-6 w-full" />
+          </div>
+        </>
       )}
     </header>
   );

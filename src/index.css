@@ -1,1 +1,36 @@
 @import "tailwindcss";
+@import "./assets/fonts/fonts.css";
+
+/*
+  Tailwind v4 is config-less by default: custom design tokens are declared
+  here with @theme instead of tailwind.config.js. Anything defined below
+  becomes a real utility class automatically, e.g.:
+    --color-brand-lime  ->  bg-brand-lime, text-brand-lime, border-brand-lime
+    --font-display       ->  font-display
+  See DESIGN.md for what each token is for and where it's used.
+*/
+
+@theme {
+  /* Brand colors — sampled from the Figma mockup, keep exact */
+  --color-brand-black: #1a1a1a;
+  --color-brand-cream: #f6f5f4;
+  --color-brand-lime: #83fd00;
+  --color-brand-mint: #cef5a4;
+  --color-brand-sage: #869c6b;
+  --color-brand-charcoal: #333333;
+
+  /* Semantic text colors */
+  --color-on-dark: #ffffff;
+  --color-on-dark-muted: #c4c4c4;
+  --color-on-light: #1a1a1a;
+  --color-on-light-muted: #595959;
+
+  /* Fonts — self-hosted variable woff2 in assets/fonts/, @font-face in assets/fonts/fonts.css */
+  --font-display: "Host Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --font-body: "Montserrat", ui-sans-serif, system-ui, sans-serif;
+  --font-script: "Caveat", cursive;
+
+  /* Shape */
+  --radius-button: 8px;
+  --radius-card: 16px;
+}

@@ -1,3 +1,9 @@
+import Hero from "../features/home/Hero";
+
 export default function Home() {
-  return <h1 className="font-display text-3xl font-bold">Home</h1>;
+  return (
+    <>
+      <Hero />
+    </>
+  );
 }

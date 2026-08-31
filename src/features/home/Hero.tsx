@@ -23,7 +23,11 @@ const SOCIALS = [
     href: "https://www.instagram.com/njoh_simplice",
     Icon: FaInstagram,
   },
-  { label: "X (Twitter)", href: "https://x.com/njoh_simplice", Icon: FaXTwitter },
+  {
+    label: "X (Twitter)",
+    href: "https://x.com/njoh_simplice",
+    Icon: FaXTwitter,
+  },
   {
     label: "Threads",
     href: "https://www.threads.com/@njoh_simplice",
@@ -64,7 +68,7 @@ export default function Hero() {
       />
 
       {/* 1. Headline */}
-      <h1 className="flex flex-wrap items-center justify-center gap-x-3 gap-y-1 font-display text-4xl font-bold leading-tight text-on-dark sm:text-5xl md:text-8xl">
+      <h1 className="flex flex-wrap items-center justify-center gap-x-3 gap-y-1 font-display text-4xl font-bold leading-tight text-on-dark sm:text-5xl md:text-7xl xl:text-8xl">
         <span className="font-script font-normal">Hey, I&rsquo;m</span>
         <span>NJOH</span>
         <HighlightText>SIMPLICE</HighlightText>

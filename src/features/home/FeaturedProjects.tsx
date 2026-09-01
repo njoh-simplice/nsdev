@@ -30,11 +30,13 @@ function ProjectCard({ project }: { project: Project }) {
 
   return (
     <article className="rounded-card bg-brand-black p-2">
+      {/* aspect-ratio matches the source screenshots (~1200x554), so the box is
+          reserved before load (no layout shift) with no crop or letterbox. */}
       <img
         src={project.image}
         alt={project.project_name}
         loading="lazy"
-        className="w-full rounded-lg"
+        className="aspect-[1200/554] w-full rounded-lg object-contain"
       />
       <div className="mt-4 flex items-center justify-between gap-3">
         <p className="min-w-0 font-body font-semibold text-on-dark">{label}</p>

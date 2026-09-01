@@ -1,6 +1,7 @@
 import { Outlet } from "react-router-dom";
 import Header from "./Header";
 import Footer from "./Footer";
+import CookieConsent from "./CookieConsent";
 
 /** App shell: persistent header + routed page content. */
 export default function RootLayout() {
@@ -11,6 +12,7 @@ export default function RootLayout() {
         <Outlet />
       </main>
       <Footer />
+      <CookieConsent />
     </div>
   );
 }

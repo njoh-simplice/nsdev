@@ -3,13 +3,7 @@ import { Link, NavLink, useLocation } from "react-router-dom";
 import { Coffee, Menu, X } from "lucide-react";
 import AnimatedLogo from "../ui/AnimatedLogo";
 import Button from "../ui/Button";
-
-const NAV_LINKS = [
-  { to: "/", label: "Home", end: true },
-  { to: "/projects", label: "Projects", end: false },
-  { to: "/blog", label: "Blog", end: false },
-  { to: "/contact", label: "Contact", end: false },
-];
+import { NAV_ITEMS } from "../../constants/nav";
 
 // Nav sits on the cream bar (brand-cream) floating on the dark shell, so state
 // uses the on-light text tokens from DESIGN.md (on-light / on-light-muted).
@@ -35,7 +29,7 @@ function NavItems({
 }) {
   return (
     <ul className={className}>
-      {NAV_LINKS.map(({ to, label, end }) => (
+      {NAV_ITEMS.map(({ to, label, end }) => (
         <li key={to}>
           <NavLink
             to={to}

@@ -1,12 +1,6 @@
-import {
-  FaInstagram,
-  FaLinkedinIn,
-  FaThreads,
-  FaTiktok,
-  FaXTwitter,
-} from "react-icons/fa6";
 import Button from "../../components/ui/Button";
 import HighlightText from "../../components/ui/HighlightText";
+import SocialLinks from "../../components/ui/SocialLinks";
 import lionPhoto from "../../assets/images/njoh-simplice-junior-lion-statue-cameroon.webp";
 import hikingPhoto from "../../assets/images/njoh-simplice-junior-hiking-trail-cameroon.webp";
 import sparkle from "../../assets/images/sparkle-accent.webp";
@@ -16,34 +10,6 @@ const HIKING_ALT =
   "Njoh Simplice Junior hiking on a rocky trail overlooking a lush green valley in Cameroon";
 const LION_ALT =
   "Njoh Simplice Junior standing arms outstretched in front of a monumental lion statue in Cameroon";
-
-const SOCIALS = [
-  {
-    label: "Instagram",
-    href: "https://www.instagram.com/njoh_simplice",
-    Icon: FaInstagram,
-  },
-  {
-    label: "X (Twitter)",
-    href: "https://x.com/njoh_simplice",
-    Icon: FaXTwitter,
-  },
-  {
-    label: "Threads",
-    href: "https://www.threads.com/@njoh_simplice",
-    Icon: FaThreads,
-  },
-  {
-    label: "TikTok",
-    href: "https://www.tiktok.com/@njoh_simplice",
-    Icon: FaTiktok,
-  },
-  {
-    label: "LinkedIn",
-    href: "https://www.linkedin.com/in/njoh-simplice-junior",
-    Icon: FaLinkedinIn,
-  },
-];
 
 const frameClass =
   "shrink-0 rounded-card bg-brand-cream p-1.5 shadow-xl transition duration-500 hover:scale-105";
@@ -154,21 +120,7 @@ export default function Hero() {
         <span className="text-xs uppercase tracking-[0.2em] text-on-dark-muted">
           Follow me :
         </span>
-        <ul className="flex items-center gap-4">
-          {SOCIALS.map(({ label, href, Icon }) => (
-            <li key={label}>
-              <a
-                href={href}
-                aria-label={label}
-                target="_blank"
-                rel="noreferrer"
-                className="flex size-10 items-center justify-center rounded-[8px] bg-brand-cream text-brand-black transition-opacity hover:opacity-90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-on-dark"
-              >
-                <Icon className="size-4" aria-hidden="true" />
-              </a>
-            </li>
-          ))}
-        </ul>
+        <SocialLinks />
       </div>
     </section>
   );

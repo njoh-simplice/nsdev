@@ -51,9 +51,11 @@ function Demo({ state, variant }: { state: State; variant: Variant }) {
 
 export default function ButtonStates() {
   return (
-    <div className="space-y-10">
+    <div className="min-h-full space-y-10 bg-brand-black px-4 py-12 text-on-dark sm:px-8">
       <header className="space-y-1">
-        <h1 className="font-display text-2xl font-bold">Button states</h1>
+        <h1 className="font-display text-[1.75rem] font-bold uppercase leading-tight md:text-[2.5rem]">
+          Button states
+        </h1>
         <p className="font-body text-sm text-on-dark-muted">
           Dev-only. Six states × two variants. hover / focus / pressed are real
           interaction states — trigger them on the buttons.

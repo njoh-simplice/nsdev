@@ -1,0 +1,18 @@
+{
+  "name": "Njoh Simplice Junior — Software Developer",
+  "short_name": "NSDEV",
+  "description": "Portfolio of Njoh Simplice Junior, freelance software developer and WordPress/SEO specialist in Yaoundé, Cameroon.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#1a1a1a",
+  "theme_color": "#1a1a1a",
+  "icons": [
+    {
+      "src": "/images/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}

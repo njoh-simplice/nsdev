@@ -1,0 +1,21 @@
+# Njoh Simplice Junior
+
+> Freelance software developer and WordPress/SEO specialist based in Yaoundé, Cameroon. Builds websites and web/mobile apps end-to-end — from Figma mockup to live site — usually in under two weeks. Serves clients in Cameroon and France.
+
+## Pages
+
+- [Home](https://nsdev.me/): Introduction, about, working process, featured projects, work experience.
+- [Projects](https://nsdev.me/projects): Full list of delivered client projects (WordPress sites, web and mobile apps).
+- [Blog](https://nsdev.me/blog): Not published yet.
+- [Contact](https://nsdev.me/contact): Contact details and an enquiry form.
+- [Legal Mentions](https://nsdev.me/legal-mentions): Site editor, hosting, intellectual property, personal data, cookies.
+
+## Contact
+
+- Email: contact@nsdev.me
+- Phone: +237 652 02 59 01
+- Location: Yaoundé, Cameroon
+
+## Skills
+
+Web development, WordPress, SEO and Core Web Vitals optimization, React, Laravel, UI/UX design, mobile app development.

@@ -37,7 +37,7 @@ export default function WorkingWithMe() {
   return (
     <section
       id="working-with-me"
-      className="relative isolate overflow-hidden bg-brand-black px-4 py-8 text-on-dark sm:px-8 md:py-16"
+      className="relative isolate overflow-hidden bg-brand-black px-4 py-16 text-on-dark sm:px-8 md:py-24"
     >
       {/* Decorative glow: full-section layer, whole image shown (contain, not
           cover), pinned to the top-right corner. */}
@@ -54,7 +54,7 @@ export default function WorkingWithMe() {
       </h2>
 
       {/* 2. Intro */}
-      <p className="mx-auto mt-4 text-center font-body text-on-dark-muted md:text-lg">
+      <p className="mx-auto mt-4 max-w-md text-center font-body text-on-dark-muted md:text-lg">
         From first idea to live product, here&rsquo;s how we&rsquo;ll get there.
       </p>
 
@@ -74,7 +74,7 @@ export default function WorkingWithMe() {
       </div>
 
       {/* 4. Step cards */}
-      <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 md:mt-4 md:grid-cols-4">
+      <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-4">
         {STEPS.map((step) => (
           <div
             key={step.n}

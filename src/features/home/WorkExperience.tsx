@@ -1,11 +1,12 @@
-import portrait from "../../assets/images/work-illustration.webp";
+import illustration from "../../assets/images/work-illustration.webp";
 import {
   DiamondMarker,
   SparkleMarker,
 } from "../../components/ui/TimelineMarker";
 
-const PORTRAIT_ALT =
-  "Portrait of Njoh Simplice Junior, software developer and webmaster";
+// The asset is an illustration, not a photo — keep the alt accurate.
+const ILLUSTRATION_ALT =
+  "Illustration representing Njoh Simplice Junior's web development work";
 
 const OCCUPATIONS = [
   {
@@ -38,8 +39,8 @@ export default function WorkExperience() {
         {/* Left: photo + heading + intro */}
         <div>
           <img
-            src={portrait}
-            alt={PORTRAIT_ALT}
+            src={illustration}
+            alt={ILLUSTRATION_ALT}
             loading="lazy"
             className="aspect-[2/1] w-full rounded-[8px] object-cover grayscale"
           />

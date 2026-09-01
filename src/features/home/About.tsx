@@ -44,7 +44,7 @@ export default function About() {
   return (
     <section
       id="about"
-      className="bg-brand-cream px-4 py-8 text-on-light sm:px-8 md:py-24"
+      className="bg-brand-cream px-4 py-16 text-on-light sm:px-8 md:py-24"
     >
       <div className="grid gap-10 md:grid-cols-[9fr_11fr] md:items-end md:gap-14">
         {/* Left: text, bottom-aligned against the photo column on desktop */}
@@ -52,7 +52,7 @@ export default function About() {
           <h2 className="font-display text-[1.75rem] text-center md:text-left font-bold uppercase leading-tight text-on-light md:text-[2.5rem]">
             Knowing Me <HighlightText>Better</HighlightText>
           </h2>
-          <p className="mt-4 max-w-[65ch] text-center md:text-left font-body text-on-light-muted md:mt-6 md:text-lg">
+          <p className="mt-4 max-w-prose text-center md:text-left font-body text-on-light-muted md:mt-6 md:text-lg">
             I turn ideas into fast, functional websites. Over the past 2 years,
             I&rsquo;ve helped clients across France and Cameroon launch and
             revamp their online presence, from Figma mockup to live site,

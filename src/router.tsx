@@ -6,6 +6,7 @@ import Blog from "./pages/Blog";
 import Contact from "./pages/Contact";
 import LegalMentions from "./pages/LegalMentions";
 import NotFound from "./pages/NotFound";
+import RouteError from "./pages/RouteError";
 
 // Dev-only routes. `import.meta.env.DEV` is statically false in a production
 // build, so this branch — and the dynamic import inside it — is tree-shaken out.
@@ -27,6 +28,7 @@ export const router = createBrowserRouter([
   {
     path: "/",
     element: <RootLayout />,
+    errorElement: <RouteError />,
     children: [
       { index: true, element: <Home /> },
       { path: "projects", element: <Projects /> },

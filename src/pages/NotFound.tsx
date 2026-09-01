@@ -1,11 +1,23 @@
+import { useEffect } from "react";
 import Button from "../components/ui/Button";
 import sparkle from "../assets/images/sparkle-accent.webp";
+import { usePageMeta } from "../hooks/usePageMeta";
 
 export default function NotFound() {
+  usePageMeta(
+    "Page Not Found — Njoh Simplice Junior",
+    "The page you're looking for doesn't exist or has moved.",
+  );
+
+  // A 404 can be reached by a hard load of a bad URL, where <ScrollRestoration>
+  // doesn't run — force the viewport to the top on mount.
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
-    <section className="flex min-h-full flex-col items-center justify-center bg-brand-black px-4 py-16 text-center text-on-dark sm:px-8">
-      {/* One deliberate entrance moment (motion-safe only). */}
-      <div className="flex flex-col items-center motion-safe:animate-fade-up">
+    <section className="flex min-h-full flex-col items-center justify-center bg-brand-black px-4 py-16 text-center text-on-dark sm:px-8 md:py-24">
+      <div className="flex flex-col items-center">
         <div className="relative">
           <img
             src={sparkle}
@@ -26,7 +38,7 @@ export default function NotFound() {
           The page you&rsquo;re looking for doesn&rsquo;t exist or has moved.
         </p>
 
-        <Button variant="primary" to="/" className="mt-8">
+        <Button variant="primary" to="/" disableMotion className="mt-8">
           Back to Home
         </Button>
       </div>

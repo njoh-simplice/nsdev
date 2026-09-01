@@ -55,9 +55,9 @@ export default function Hero() {
       {/* 3. Buttons — secondary first (left), primary second (right) */}
       <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
         <Button variant="secondary" href="#projects">
-          View my recent projets
+          View my recent projects
         </Button>
-        <Button>Get in touch</Button>
+        <Button href="/contact">Get in touch</Button>
       </div>
 
       {/* 4 & 5. Photo collage + sparkles */}

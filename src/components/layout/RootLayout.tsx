@@ -1,4 +1,4 @@
-import { Outlet } from "react-router-dom";
+import { Outlet, ScrollRestoration } from "react-router-dom";
 import Header from "./Header";
 import Footer from "./Footer";
 import CookieConsent from "./CookieConsent";
@@ -13,6 +13,8 @@ export default function RootLayout() {
       </main>
       <Footer />
       <CookieConsent />
+      {/* Reset scroll to top on new navigations; restore it on back/forward. */}
+      <ScrollRestoration />
     </div>
   );
 }

@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Button from "../ui/Button";
 import { useCookieConsent } from "../../hooks/useCookieConsent";
 
@@ -20,12 +21,12 @@ export default function CookieConsent() {
         <p className="text-center font-body text-sm text-on-dark-muted sm:text-left">
           This site uses Google Analytics (GA4) to understand traffic and
           improve the experience. It only runs if you accept — see{" "}
-          <a
-            href="/legal-mentions"
+          <Link
+            to="/legal-mentions"
             className="underline decoration-on-dark-muted/40 underline-offset-2 hover:text-on-dark"
           >
             Legal Mentions
-          </a>{" "}
+          </Link>{" "}
           for details.
         </p>
         <div className="flex shrink-0 gap-3">

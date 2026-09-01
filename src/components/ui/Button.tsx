@@ -27,6 +27,12 @@ interface BaseProps {
   /** Leading icon, rendered before the label. Replaced by the spinner while loading. */
   icon?: ReactNode;
   /**
+   * Drop the decorative hover/active scale. Colour hover and `focus-visible`
+   * states stay — those are functional affordances, not animation. Used on
+   * pages that opt out of motion (Contact, 404). Default `false`.
+   */
+  disableMotion?: boolean;
+  /**
    * Client-side route. When set, renders react-router's `<Link to={...}>` with
    * the same variant styles — an SPA transition, no full reload. Mutually
    * exclusive with `href` (use `href` for external / same-page anchor links).
@@ -52,14 +58,16 @@ export type ButtonProps = ButtonOnlyProps | AnchorProps;
 const cx = (...parts: Array<string | false | null | undefined>) =>
   parts.filter(Boolean).join(" ");
 
-const base = cx(
+const baseCommon = cx(
   "relative inline-flex items-center justify-center gap-2",
   "font-body text-[0.9375rem] md:text-base font-semibold",
   "rounded-button px-6 py-3 select-none",
   "transition duration-150",
   "focus-visible:outline-2 focus-visible:outline-offset-2",
-  "motion-safe:hover:scale-[1.01] motion-safe:active:scale-[0.97]",
 );
+
+const scaleMotion =
+  "motion-safe:hover:scale-[1.01] motion-safe:active:scale-[0.97]";
 
 const variantClass: Record<Variant, string> = {
   // brightness on hover is primary-only: on the lime fill it lifts the
@@ -156,6 +164,7 @@ export default function Button(props: ButtonProps) {
     variant = "primary",
     loading = false,
     disabled = false,
+    disableMotion = false,
     icon,
     children,
     className,
@@ -164,7 +173,8 @@ export default function Button(props: ButtonProps) {
   } = props;
 
   const rootClass = cx(
-    base,
+    baseCommon,
+    !disableMotion && scaleMotion,
     variantClass[variant],
     disabled ? disabledClass : "cursor-pointer",
     className,

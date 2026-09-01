@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import Button from "../components/ui/Button";
 import { COOKIE_CONSENT_STORAGE_KEY } from "../hooks/useCookieConsent";
+import { usePageMeta } from "../hooks/usePageMeta";
 
 // Set by hand when the content below actually changes — not computed from
 // the visitor's clock, which would make "last updated" meaningless.
@@ -19,9 +20,14 @@ function resetCookieConsent() {
 }
 
 export default function LegalMentions() {
+  usePageMeta(
+    "Legal Mentions — Njoh Simplice Junior",
+    "Legal information for nsdev.me: site editor, hosting, intellectual property, personal data and cookies.",
+  );
+
   return (
     <div className="bg-brand-black px-4 py-16 text-on-dark sm:px-8 md:py-24">
-      <div className="mx-auto max-w-[70ch] text-center sm:text-left">
+      <div className="mx-auto max-w-5xl text-center sm:text-left">
         <h1 className="font-display text-3xl font-bold md:text-4xl">
           Legal Mentions
         </h1>
@@ -35,13 +41,13 @@ export default function LegalMentions() {
           </h2>
           <ul className="mt-3 space-y-1 font-body text-on-dark-muted">
             <li>
-              Njoh Simplice Junior — independent freelancer (not registered as
-              a formal business or company)
+              Njoh Simplice Junior — independent freelancer (not registered as a
+              formal business or company)
             </li>
             <li>Yaoundé, Cameroon</li>
             <li>
-              <a href="mailto:njohjunior4@gmail.com" className={linkClass}>
-                njohjunior4@gmail.com
+              <a href="mailto:contact@nsdev.me" className={linkClass}>
+                contact@nsdev.me
               </a>
             </li>
             <li>
@@ -77,10 +83,10 @@ export default function LegalMentions() {
             Intellectual Property
           </h2>
           <p className="mt-3 font-body text-on-dark-muted">
-            All text, images, and code on this website are the property of
-            Njoh Simplice Junior unless otherwise credited. Reproduction,
-            distribution, or reuse of this content, in whole or in part,
-            without prior written permission is not authorized.
+            All text, images, and code on this website are the property of Njoh
+            Simplice Junior unless otherwise credited. Reproduction,
+            distribution, or reuse of this content, in whole or in part, without
+            prior written permission is not authorized.
           </p>
         </section>
 
@@ -89,9 +95,9 @@ export default function LegalMentions() {
             Personal Data
           </h2>
           <p className="mt-3 font-body text-on-dark-muted">
-            The contact form on this site collects your first name, last
-            name, phone number, email address, subject, and message. This
-            information is used solely to respond to the inquiry you submit.
+            The contact form on this site collects your first name, last name,
+            phone number, email address, subject, and message. This information
+            is used solely to respond to the inquiry you submit.
           </p>
           {/* TODO: state exactly how submissions are delivered/stored once the
               Contact page backend is built (e.g. "sent directly by email via
@@ -102,14 +108,14 @@ export default function LegalMentions() {
             Google Analytics (GA4) and Google Search Console are used to
             understand site traffic and search performance. Search Console
             itself does not set cookies on visitors (it only verifies site
-            ownership); Google Analytics does collect usage data — see
-            Cookies below.
+            ownership); Google Analytics does collect usage data — see Cookies
+            below.
           </p>
           <p className="mt-3 font-body text-on-dark-muted">
-            You can request access to, correction of, or deletion of your
-            data at any time by emailing{" "}
-            <a href="mailto:njohjunior4@gmail.com" className={linkClass}>
-              njohjunior4@gmail.com
+            You can request access to, correction of, or deletion of your data
+            at any time by emailing{" "}
+            <a href="mailto:contact@nsdev.me" className={linkClass}>
+              contact@nsdev.me
             </a>
             .
           </p>
@@ -120,10 +126,10 @@ export default function LegalMentions() {
             Cookies
           </h2>
           <p className="mt-3 font-body text-on-dark-muted">
-            Google Analytics (GA4) sets cookies on this site to measure
-            traffic and usage patterns. It only runs after you accept the
-            cookie banner shown on your first visit — declining (or not
-            responding) keeps it off.
+            Google Analytics (GA4) sets cookies on this site to measure traffic
+            and usage patterns. It only runs after you accept the cookie banner
+            shown on your first visit — declining (or not responding) keeps it
+            off.
           </p>
           <div className="mt-4">
             <Button variant="secondary" onClick={resetCookieConsent}>

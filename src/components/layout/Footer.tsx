@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import SocialLinks from "../ui/SocialLinks";
 import { NAV_ITEMS } from "../../constants/nav";
 
@@ -71,14 +71,12 @@ export default function Footer() {
 
       {/* 4. Legal + socials */}
       <div className="mt-3 flex flex-col items-center gap-4 px-4 sm:mt-6 sm:flex-row sm:justify-between sm:px-8">
-        {/* TODO: no /legal-mentions (a.k.a. /mentions-legales) route or page
-            exists yet — this href is a placeholder until that page is built. */}
-        <a
-          href="/legal-mentions"
+        <Link
+          to="/legal-mentions"
           className="font-body text-xs lowercase text-on-light-muted transition-opacity hover:text-on-light focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-on-light"
         >
           legal mentions
-        </a>
+        </Link>
         <SocialLinks variant="outline" />
       </div>
     </footer>

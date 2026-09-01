@@ -1,6 +1,7 @@
 import Button from "../../components/ui/Button";
 import HighlightText from "../../components/ui/HighlightText";
-import { projects, type Project } from "../../data/projectsData/projects";
+import ProjectCard from "../projects/ProjectCard";
+import { projects } from "../../data/projectsData/projects";
 
 // Home page teaser: the last 3 live projects (newest, added at the end of the
 // list). The Projects page shows the full list.
@@ -8,43 +9,6 @@ const HOME_LIMIT = 3;
 const featured = projects
   .filter((project) => project.isDisplay)
   .slice(-HOME_LIMIT);
-
-function ProjectCard({ project }: { project: Project }) {
-  const label = `${project.project_name} (${project.type})`;
-  const isInternal = project.link.startsWith("/");
-
-  const linkButton = isInternal ? (
-    <Button variant="secondary" to={project.link}>
-      View project
-    </Button>
-  ) : (
-    <Button
-      variant="secondary"
-      href={project.link}
-      target="_blank"
-      rel="noreferrer"
-    >
-      View project
-    </Button>
-  );
-
-  return (
-    <article className="rounded-card bg-brand-black p-2">
-      {/* aspect-ratio matches the source screenshots (~1200x554), so the box is
-          reserved before load (no layout shift) with no crop or letterbox. */}
-      <img
-        src={project.image}
-        alt={project.project_name}
-        loading="lazy"
-        className="aspect-[1200/554] w-full rounded-lg object-contain"
-      />
-      <div className="mt-4 flex items-center justify-between gap-3">
-        <p className="min-w-0 font-body font-semibold text-on-dark">{label}</p>
-        <div className="shrink-0">{linkButton}</div>
-      </div>
-    </article>
-  );
-}
 
 export default function FeaturedProjects() {
   return (
@@ -58,7 +22,7 @@ export default function FeaturedProjects() {
       </h2>
 
       {/* Intro */}
-      <p className="mx-auto mt-4 max-w-xs text-center font-body text-on-light-muted md:text-lg">
+      <p className="mx-auto mt-4 max-w-md text-center font-body text-on-light-muted md:text-lg">
         A few things I&rsquo;ve built recently.
       </p>
 

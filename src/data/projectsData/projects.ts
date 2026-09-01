@@ -17,9 +17,9 @@ export interface Project {
   isDisplay: boolean;
 }
 
-// Links are real; project_name / type / description still need a manual pass.
-// The home page shows the first 3 with isDisplay: true (see FeaturedProjects);
-// the Projects page will show all of them where isDisplay is true.
+// Maintained by hand. The home page shows the LAST 3 entries where isDisplay is
+// true (see FeaturedProjects); the Projects page shows all of them. Names, types
+// and descriptions are approximate — refine as needed.
 export const projects: Project[] = [
   {
     id: "njohfolio",
@@ -27,7 +27,7 @@ export const projects: Project[] = [
     image: "/images/projects/njohfolio.webp",
     link: "https://njohfolio.vercel.app",
     type: "Website",
-    description: "TODO: short description.",
+    description: "A personal portfolio.",
     isDisplay: true,
   },
   {
@@ -36,7 +36,7 @@ export const projects: Project[] = [
     image: "/images/projects/synergie_barber.webp",
     link: "https://synergie-barber.com",
     type: "Website",
-    description: "TODO: short description.",
+    description: "Website for a barbershop brand.",
     isDisplay: true,
   },
   {
@@ -45,7 +45,7 @@ export const projects: Project[] = [
     image: "/images/projects/tripkam.webp",
     link: "https://github.com/njoh-simplice/tripkam",
     type: "Web app",
-    description: "TODO: short description.",
+    description: "Web app for planning trips around Cameroon.",
     isDisplay: true,
   },
   {
@@ -54,7 +54,7 @@ export const projects: Project[] = [
     image: "/images/projects/cjarc.webp",
     link: "https://cjarc.org",
     type: "Website",
-    description: "TODO: short description.",
+    description: "Website for the CJARC organisation.",
     isDisplay: true,
   },
   {
@@ -63,7 +63,7 @@ export const projects: Project[] = [
     image: "/images/projects/cmicjarc.webp",
     link: "https://cmicjarc.com",
     type: "Website",
-    description: "TODO: short description.",
+    description: "Website for CMI CJARC.",
     isDisplay: true,
   },
   {
@@ -72,7 +72,7 @@ export const projects: Project[] = [
     image: "/images/projects/figurative.webp",
     link: "https://figurative.fr",
     type: "Website",
-    description: "TODO: short description.",
+    description: "Brand website.",
     isDisplay: true,
   },
   {
@@ -81,7 +81,7 @@ export const projects: Project[] = [
     image: "/images/projects/immigration_lafinesse.webp",
     link: "https://immigration-lafinesse.com",
     type: "Website",
-    description: "TODO: short description.",
+    description: "Website for an immigration advisory firm.",
     isDisplay: true,
   },
   {
@@ -90,7 +90,8 @@ export const projects: Project[] = [
     image: "/images/projects/le_point_express.webp",
     link: "https://github.com/njoh-simplice/Livraison-Frontend",
     type: "Web app",
-    description: "TODO: short description.",
+    description:
+      "Delivery-management web app with a React front-end and a Laravel back-end.",
     isDisplay: true,
   },
   {
@@ -99,7 +100,7 @@ export const projects: Project[] = [
     image: "/images/projects/oeil_sur.webp",
     link: "https://oeil-sur.com",
     type: "Website",
-    description: "TODO: short description.",
+    description: "Editorial website.",
     isDisplay: true,
   },
   {
@@ -108,17 +109,16 @@ export const projects: Project[] = [
     image: "/images/projects/coolé.webp",
     link: "https://coole.fr",
     type: "Website",
-    description: "TODO: short description.",
+    description: "Brand website.",
     isDisplay: true,
   },
   {
     id: "ambira",
     project_name: "Ambira",
-    // TODO: add public/images/projects/ambira.webp (no image file yet).
     image: "/images/projects/ambira-light.webp",
     link: "https://ambira.nsdev.me",
     type: "Website",
-    description: "TODO: short description.",
+    description: "Product website.",
     isDisplay: true,
   },
 ];

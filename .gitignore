@@ -8,8 +8,6 @@ pnpm-debug.log*
 lerna-debug.log*
 
 node_modules
-CLAUDE.md
-src/DESIGN.md
 dist
 dist-ssr
 *.local

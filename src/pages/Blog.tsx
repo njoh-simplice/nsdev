@@ -5,7 +5,7 @@ import { usePageMeta } from "../hooks/usePageMeta";
 // empty state below.
 export default function Blog() {
   usePageMeta(
-    "Blog — Njoh Simplice Junior",
+    "Blog | Njoh Simplice Junior",
     "Articles and notes from Njoh Simplice Junior on web development, WordPress and SEO. Nothing published yet.",
   );
 

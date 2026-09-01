@@ -7,7 +7,7 @@ const delivered = projects.filter((project) => project.isDisplay);
 
 export default function Projects() {
   usePageMeta(
-    "Projects — Njoh Simplice Junior",
+    "Projects | Njoh Simplice Junior",
     "Websites, web apps and mobile apps delivered by Njoh Simplice Junior for clients in Cameroon and France.",
   );
 

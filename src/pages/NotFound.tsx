@@ -5,7 +5,7 @@ import { usePageMeta } from "../hooks/usePageMeta";
 
 export default function NotFound() {
   usePageMeta(
-    "Page Not Found — Njoh Simplice Junior",
+    "Page Not Found | Njoh Simplice Junior",
     "The page you're looking for doesn't exist or has moved.",
   );
 

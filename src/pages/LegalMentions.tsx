@@ -21,7 +21,7 @@ function resetCookieConsent() {
 
 export default function LegalMentions() {
   usePageMeta(
-    "Legal Mentions — Njoh Simplice Junior",
+    "Legal Mentions | Njoh Simplice Junior",
     "Legal information for nsdev.me: site editor, hosting, intellectual property, personal data and cookies.",
   );
 

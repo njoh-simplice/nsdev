@@ -140,7 +140,7 @@ const errorClass = "font-body text-sm font-medium text-on-dark-muted";
 
 export default function Contact() {
   usePageMeta(
-    "Contact — Njoh Simplice Junior",
+    "Contact | Njoh Simplice Junior",
     "Get in touch with Njoh Simplice Junior — email contact@nsdev.me, phone +237 652 02 59 01, based in Yaoundé, Cameroon.",
   );
 

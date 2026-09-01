@@ -3,6 +3,7 @@ import type {
   ButtonHTMLAttributes,
   ReactNode,
 } from "react";
+import { Link } from "react-router-dom";
 
 type Variant = "primary" | "secondary";
 
@@ -25,6 +26,13 @@ interface BaseProps {
   disabled?: boolean;
   /** Leading icon, rendered before the label. Replaced by the spinner while loading. */
   icon?: ReactNode;
+  /**
+   * Client-side route. When set, renders react-router's `<Link to={...}>` with
+   * the same variant styles — an SPA transition, no full reload. Mutually
+   * exclusive with `href` (use `href` for external / same-page anchor links).
+   * `loading` is ignored here, same as on the `href` path.
+   */
+  to?: string;
   children: ReactNode;
 }
 
@@ -124,8 +132,9 @@ function Content({
 /**
  * Button / call-to-action, per DESIGN.md.
  *
- * Renders a `<button>` by default, or an `<a>` when `href` is set. Two variants
- * (`primary`, `secondary`), each covering six states: default, hover, focus,
+ * Renders a `<button>` by default, an `<a>` when `href` is set, or a
+ * react-router `<Link>` when `to` is set. Two variants (`primary`, `secondary`),
+ * each covering six states: default, hover, focus,
  * pressed, loading, disabled — all built from existing design tokens
  * (`bg-brand-lime`, `text-brand-mint`, `rounded-button`, …), no new colors.
  *
@@ -150,6 +159,7 @@ export default function Button(props: ButtonProps) {
     icon,
     children,
     className,
+    to,
     ...rest
   } = props;
 
@@ -159,6 +169,40 @@ export default function Button(props: ButtonProps) {
     disabled ? disabledClass : "cursor-pointer",
     className,
   );
+
+  if (to !== undefined) {
+    if (import.meta.env.DEV && loading) {
+      console.warn(
+        "<Button>: `loading` is ignored on the `to` (router link) variant.",
+      );
+    }
+
+    const { onClick, ...linkRest } = rest as Omit<
+      AnchorHTMLAttributes<HTMLAnchorElement>,
+      "href"
+    >;
+
+    return (
+      <Link
+        {...linkRest}
+        to={to}
+        aria-disabled={disabled || undefined}
+        tabIndex={disabled ? -1 : linkRest.tabIndex}
+        className={rootClass}
+        onClick={(event) => {
+          if (disabled) {
+            event.preventDefault();
+            return;
+          }
+          onClick?.(event);
+        }}
+      >
+        <Content icon={icon} loading={false}>
+          {children}
+        </Content>
+      </Link>
+    );
+  }
 
   if (props.href !== undefined) {
     const { href, ...anchorRest } = rest as AnchorHTMLAttributes<HTMLAnchorElement>;

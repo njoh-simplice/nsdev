@@ -75,11 +75,11 @@ export default function WorkingWithMe() {
 
       {/* 1. Heading */}
       <h2 className="text-center font-display text-[1.75rem] font-bold uppercase leading-tight text-on-dark md:text-[2.5rem]">
-        <HighlightText>Working</HighlightText> with Me
+        Working with <HighlightText>Me</HighlightText>
       </h2>
 
       {/* 2. Intro */}
-      <p className="mx-auto mt-4 max-w-base text-center font-body text-on-dark-muted md:text-lg">
+      <p className="mx-auto mt-4 text-center font-body text-on-dark-muted md:text-lg">
         From first idea to live product, here&rsquo;s how we&rsquo;ll get there.
       </p>
 

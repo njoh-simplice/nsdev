@@ -3,6 +3,7 @@ import webIntegrationImg from "../../assets/images/hoverAbout/Web-integration.we
 import mobileDevelopmentImg from "../../assets/images/hoverAbout/mobile-development.webp";
 import webDesignImg from "../../assets/images/hoverAbout/web-design.webp";
 import seoSpecialistImg from "../../assets/images/hoverAbout/SEO-Specialist.webp";
+import HighlightText from "../../components/ui/HighlightText";
 
 // `rotate` is the tilt each hover preview settles into — a different angle per
 // item so they don't feel stamped from one template. Full class strings (not
@@ -48,10 +49,10 @@ export default function About() {
       <div className="grid gap-10 md:grid-cols-[9fr_11fr] md:items-end md:gap-14">
         {/* Left: text, bottom-aligned against the photo column on desktop */}
         <div>
-          <h2 className="font-display text-[1.75rem] font-bold uppercase leading-tight text-on-light md:text-[2.5rem]">
-            Knowing Me Better
+          <h2 className="font-display text-[1.75rem] text-center md:text-left font-bold uppercase leading-tight text-on-light md:text-[2.5rem]">
+            Knowing Me <HighlightText>Better</HighlightText>
           </h2>
-          <p className="mt-4 max-w-[65ch] font-body text-on-light-muted md:mt-6 md:text-lg">
+          <p className="mt-4 max-w-[65ch] text-center md:text-left font-body text-on-light-muted md:mt-6 md:text-lg">
             I turn ideas into fast, functional websites. Over the past 2 years,
             I&rsquo;ve helped clients across France and Cameroon launch and
             revamp their online presence, from Figma mockup to live site,

@@ -1,5 +1,9 @@
 import glow from "../../assets/images/working-with-me-background.png";
 import HighlightText from "../../components/ui/HighlightText";
+import {
+  DiamondMarker,
+  SparkleMarker,
+} from "../../components/ui/TimelineMarker";
 
 const STEPS = [
   {
@@ -28,35 +32,6 @@ const STEPS = [
     active: false,
   },
 ];
-
-/** Current-step marker: a filled four-point sparkle, brand-lime, larger. */
-function SparkleMarker() {
-  return (
-    <svg
-      viewBox="0 0 32 32"
-      aria-hidden="true"
-      className="size-7 text-brand-lime"
-    >
-      <path
-        fill="currentColor"
-        d="M16 0c1 9 6 14 16 16-10 2-15 7-16 16-1-9-6-14-16-16C10 14 15 9 16 0z"
-      />
-    </svg>
-  );
-}
-
-/** Upcoming-step marker: a small muted diamond. */
-function DiamondMarker() {
-  return (
-    <svg
-      viewBox="0 0 16 16"
-      aria-hidden="true"
-      className="size-3 text-on-dark-muted"
-    >
-      <path fill="currentColor" d="M8 0l8 8-8 8-8-8z" />
-    </svg>
-  );
-}
 
 export default function WorkingWithMe() {
   return (

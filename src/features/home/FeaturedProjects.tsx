@@ -38,7 +38,7 @@ export default function FeaturedProjects() {
       {/* CTA */}
       <div className="mt-12 flex justify-center">
         <Button variant="primary" to="/projects">
-          See more
+          View all projects
         </Button>
       </div>
     </section>

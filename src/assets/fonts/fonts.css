@@ -2,8 +2,9 @@
   Self-hosted webfonts for NSDEV.
 
   All three are variable fonts, latin subset only (covers French: é è à ç ù
-   œ “ ” … are all inside Google's "latin" range). Files sit next to this
-  stylesheet in src/assets/fonts/. Imported from src/index.css.
+   œ “ ” … are all inside Google's "latin" range). Files live in public/fonts/
+  (stable, un-fingerprinted URLs) so index.html can <link rel="preload"> them —
+  that's what keeps the swap from causing layout shift (CLS).
 
   Family names here must match the --font-* tokens in src/index.css / DESIGN.md:
     Host Grotesk -> --font-display
@@ -13,7 +14,7 @@
 
 @font-face {
   font-family: "Host Grotesk";
-  src: url("./host-grotesk-variable-latin.woff2") format("woff2");
+  src: url("/fonts/host-grotesk-variable-latin.woff2") format("woff2");
   font-weight: 300 800;
   font-style: normal;
   font-display: swap;
@@ -21,7 +22,7 @@
 
 @font-face {
   font-family: "Montserrat";
-  src: url("./montserrat-variable-latin.woff2") format("woff2");
+  src: url("/fonts/montserrat-variable-latin.woff2") format("woff2");
   font-weight: 100 900;
   font-style: normal;
   font-display: swap;
@@ -32,7 +33,7 @@
    font-style: italic (there is no italic face, it would render as faux-oblique). */
 @font-face {
   font-family: "Caveat";
-  src: url("./caveat-variable-latin.woff2") format("woff2");
+  src: url("/fonts/caveat-variable-latin.woff2") format("woff2");
   font-weight: 400 700;
   font-style: normal;
   font-display: swap;

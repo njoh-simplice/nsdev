@@ -10,8 +10,12 @@ export default function ProjectCard({ project }: { project: Project }) {
   const label = `${project.project_name} (${project.type})`;
   const isInternal = project.link.startsWith("/");
 
+  // Visible text stays short; the accessible name names the project so the link
+  // is descriptive on its own (SEO + screen readers).
+  const ariaLabel = `View project: ${project.project_name}`;
+
   const linkButton = isInternal ? (
-    <Button variant="secondary" to={project.link}>
+    <Button variant="secondary" to={project.link} aria-label={ariaLabel}>
       View project
     </Button>
   ) : (
@@ -20,6 +24,7 @@ export default function ProjectCard({ project }: { project: Project }) {
       href={project.link}
       target="_blank"
       rel="noreferrer"
+      aria-label={ariaLabel}
     >
       View project
     </Button>

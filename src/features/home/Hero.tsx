@@ -48,7 +48,7 @@ export default function Hero() {
           {" "}
           (at night)
         </span>
-        . I craft website and mobile apps that align with your brand and engage
+        . I craft websites and mobile apps that align with your brand and engage
         your audience
       </p>
 

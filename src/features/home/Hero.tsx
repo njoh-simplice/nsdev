@@ -1,6 +1,6 @@
 import Button from "../../components/ui/Button";
 import HighlightText from "../../components/ui/HighlightText";
-import SocialLinks from "../../components/ui/SocialLinks";
+import SocialDock from "../../components/ui/SocialDock";
 import lionPhoto from "../../assets/images/njoh-simplice-junior-lion-statue-cameroon.webp";
 import hikingPhoto from "../../assets/images/njoh-simplice-junior-hiking-trail-cameroon.webp";
 import sparkle from "../../assets/images/sparkle-accent.webp";
@@ -115,12 +115,12 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* 6. Follow me + social icons */}
+      {/* 6. Follow me + social icons (dock magnification is Hero-only) */}
       <div className="mt-12 flex flex-col items-center gap-3">
         <span className="text-xs uppercase tracking-[0.2em] text-on-dark-muted">
           Follow me :
         </span>
-        <SocialLinks />
+        <SocialDock />
       </div>
     </section>
   );

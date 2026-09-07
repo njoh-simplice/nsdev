@@ -7,6 +7,12 @@ import { getPostBySlug, type BlogPost as Post } from "../features/blog/lib/posts
 import { formatPostDate } from "../features/blog/lib/formatDate";
 import { markdownComponents } from "../features/blog/markdownComponents";
 import { SITE_URL } from "../constants/pageMeta";
+import {
+  setDescription,
+  setKeywords,
+  setOgType,
+  setSocialImage,
+} from "../utils/headMeta";
 
 const AUTHOR = { "@type": "Person", name: "Njoh Simplice Junior" } as const;
 
@@ -53,14 +59,16 @@ export default function BlogPost() {
   const { slug } = useParams<{ slug: string }>();
   const post = slug ? getPostBySlug(slug) : undefined;
 
-  // Per-post <title> / description. Prerendering bakes the same values into the
-  // static HTML (scripts/prerender.mjs); this keeps them right on client nav.
+  // Per-post <head>. Prerendering bakes the same values into the static HTML
+  // (scripts/prerender.mjs); this keeps them right on client-side nav.
+  // usePageMeta resets keywords / image / og:type when leaving for another route.
   useEffect(() => {
     if (!post) return;
     document.title = `${post.title} — Njoh Simplice Junior`;
-    document
-      .querySelector('meta[name="description"]')
-      ?.setAttribute("content", post.excerpt);
+    setDescription(post.excerpt);
+    setKeywords(post.tags.join(", "));
+    setSocialImage(`${SITE_URL}${post.coverImage}`);
+    setOgType("article");
   }, [post]);
 
   if (!post) return <NotFound />;

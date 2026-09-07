@@ -67,6 +67,18 @@ function buildDocument(template, route, appHtml, meta) {
   html = setMeta(html, "name", "twitter:title", meta.title);
   html = setMeta(html, "name", "twitter:description", meta.description);
 
+  // Blog posts override these; other routes keep the site-wide tags in index.html.
+  if (meta.keywords) {
+    html = setMeta(html, "name", "keywords", meta.keywords);
+  }
+  if (meta.image) {
+    html = setMeta(html, "property", "og:image", meta.image);
+    html = setMeta(html, "name", "twitter:image", meta.image);
+  }
+  if (meta.ogType) {
+    html = setMeta(html, "property", "og:type", meta.ogType);
+  }
+
   if (NOINDEX_ROUTES.has(route)) {
     html = html.replace(
       "</head>",
@@ -108,6 +120,9 @@ const blogJobs = getAllPosts().map((post) => ({
   meta: {
     title: `${post.title} — Njoh Simplice Junior`,
     description: post.excerpt,
+    keywords: post.tags.join(", "),
+    image: `${SITE_URL}${post.coverImage}`,
+    ogType: "article",
   },
 }));
 

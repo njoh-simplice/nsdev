@@ -3,7 +3,10 @@ import { Link, useParams } from "react-router-dom";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import NotFound from "./NotFound";
-import { getPostBySlug, type BlogPost as Post } from "../features/blog/lib/posts";
+import {
+  getPostBySlug,
+  type BlogPost as Post,
+} from "../features/blog/lib/posts";
 import { formatPostDate } from "../features/blog/lib/formatDate";
 import { markdownComponents } from "../features/blog/markdownComponents";
 import { SITE_URL } from "../constants/pageMeta";
@@ -49,10 +52,10 @@ function articleSchema(post: Post): string {
     });
   }
 
-  return JSON.stringify({ "@context": "https://schema.org", "@graph": graph }).replace(
-    /</g,
-    "\\u003c",
-  );
+  return JSON.stringify({
+    "@context": "https://schema.org",
+    "@graph": graph,
+  }).replace(/</g, "\\u003c");
 }
 
 export default function BlogPost() {
@@ -75,7 +78,7 @@ export default function BlogPost() {
 
   return (
     <section className="bg-brand-black px-4 py-16 text-on-dark sm:px-8 md:py-24">
-      <article className="mx-auto max-w-4xl">
+      <article className="mx-auto max-w-3xl">
         <Link
           to="/blog"
           className="font-body text-sm text-on-dark underline decoration-on-dark-muted/50 underline-offset-2 hover:decoration-on-dark focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-on-dark"
@@ -95,9 +98,7 @@ export default function BlogPost() {
 
         <p className="mt-3 font-body text-sm text-on-dark-muted">
           <time dateTime={post.date}>{formatPostDate(post.date)}</time>
-          {post.tags.length > 0 && (
-            <span> · {post.tags.join(", ")}</span>
-          )}
+          {post.tags.length > 0 && <span> · {post.tags.join(", ")}</span>}
         </p>
 
         <div className="mt-8">

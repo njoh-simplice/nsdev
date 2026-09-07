@@ -13,13 +13,42 @@
 // import time, so this has to be set before the dynamic import below.
 process.env.NODE_ENV ??= "production";
 
-import { mkdir, readFile, writeFile } from "node:fs/promises";
+import { mkdir, readFile, readdir, writeFile } from "node:fs/promises";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const distDir = join(root, "dist");
-const serverEntry = join(root, "dist-ssr", "entry-server.js");
+const ssrDir = join(root, "dist-ssr");
+
+/**
+ * Find the bundled SSR entry. Normally `dist-ssr/entry-server.js`, but if the
+ * Vite config ever gains a plugin that hashes SSR output or nests it under
+ * `assets/`, this walks the tree and finds it anyway instead of failing with a
+ * hardcoded-path import error.
+ */
+async function findServerEntry(dir) {
+  const entries = await readdir(dir, { withFileTypes: true });
+  const direct = entries.find(
+    (entry) => entry.isFile() && /^entry-server.*\.m?js$/.test(entry.name),
+  );
+  if (direct) return join(dir, direct.name);
+  for (const entry of entries) {
+    if (entry.isDirectory()) {
+      const found = await findServerEntry(join(dir, entry.name));
+      if (found) return found;
+    }
+  }
+  return null;
+}
+
+const serverEntry = await findServerEntry(ssrDir);
+if (!serverEntry) {
+  throw new Error(
+    `Prerender: no entry-server*.js found under ${ssrDir} — did the SSR build run?`,
+  );
+}
+console.log(`using SSR entry ${serverEntry.slice(root.length + 1)}`);
 
 const { render, PAGE_META, PRERENDER_ROUTES, SITE_URL, getAllPosts } =
   await import(pathToFileURL(serverEntry).href);

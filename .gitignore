@@ -12,6 +12,10 @@ dist
 dist-ssr
 *.local
 
+# Wrangler local dev/cache only — wrangler.jsonc itself IS tracked.
+.wrangler/
+.dev.vars
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

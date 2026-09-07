@@ -1,19 +1,34 @@
 import { usePageMeta } from "../hooks/usePageMeta";
+import BlogCard from "../features/blog/BlogCard";
+import { getAllPosts } from "../features/blog/lib/posts";
 
-// Real blog content is not modelled yet. When it is, type posts with
-// `BlogPost` from src/types/blog.ts and render a list here instead of the
-// empty state below.
+const posts = getAllPosts();
+
 export default function Blog() {
   usePageMeta("/blog");
 
   return (
-    <section className="flex min-h-full flex-col items-center justify-center bg-brand-black px-4 py-16 text-center text-on-dark sm:px-8 md:py-24">
-      <h1 className="font-display text-[1.75rem] font-bold uppercase leading-tight md:text-[2.5rem]">
+    <section className="bg-brand-cream px-4 py-16 text-on-light sm:px-8 md:py-24">
+      <h1 className="text-center font-display text-[1.75rem] font-bold uppercase leading-tight text-on-light md:text-[2.5rem]">
         Blog
       </h1>
-      <p className="mt-3 font-body text-on-dark-muted md:text-lg">
-        No articles yet — check back soon.
+      <p className="mx-auto mt-4 max-w-md text-center font-body text-on-light-muted md:text-lg">
+        Notes on web development, WordPress and SEO.
       </p>
+
+      {posts.length === 0 ? (
+        <p className="mt-12 text-center font-body text-on-light-muted md:text-lg">
+          No posts yet — check back soon.
+        </p>
+      ) : (
+        <ul className="mx-auto mt-12 grid max-w-6xl grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {posts.map((post) => (
+            <li key={post.slug} className="flex">
+              <BlogCard post={post} />
+            </li>
+          ))}
+        </ul>
+      )}
     </section>
   );
 }

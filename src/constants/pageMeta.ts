@@ -32,7 +32,7 @@ export const PAGE_META = {
   "/blog": {
     title: "Blog | Njoh Simplice Junior",
     description:
-      "Articles and notes from Njoh Simplice Junior on web development, WordPress and SEO. Nothing published yet.",
+      "Notes from Njoh Simplice Junior on web development, WordPress and SEO — practical write-ups from client work.",
   },
   "/contact": {
     title: "Contact | Njoh Simplice Junior",

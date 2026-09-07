@@ -40,6 +40,16 @@ export const routes: RouteObject[] = [
       { path: "about", element: <About /> },
       { path: "projects", element: <Projects /> },
       { path: "blog", element: <Blog /> },
+      {
+        // Lazy so react-markdown + the Markdown pipeline only load when a post
+        // is opened, not on every page. React Router's static handler awaits
+        // this during prerendering, so the article HTML is still baked in.
+        path: "blog/:slug",
+        lazy: async () => {
+          const { default: Component } = await import("./pages/BlogPost");
+          return { Component };
+        },
+      },
       { path: "contact", element: <Contact /> },
       { path: "legal-mentions", element: <LegalMentions /> },
       ...devRoutes,

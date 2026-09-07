@@ -21,9 +21,8 @@ const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const distDir = join(root, "dist");
 const serverEntry = join(root, "dist-ssr", "entry-server.js");
 
-const { render, PAGE_META, PRERENDER_ROUTES, SITE_URL } = await import(
-  pathToFileURL(serverEntry).href
-);
+const { render, PAGE_META, PRERENDER_ROUTES, SITE_URL, getAllPosts } =
+  await import(pathToFileURL(serverEntry).href);
 
 /** Routes that get a file but should stay out of search results. */
 const NOINDEX_ROUTES = new Set(["/404"]);
@@ -47,10 +46,7 @@ function setMeta(html, attr, name, value) {
   return html.replace(pattern, `$1${escapeAttribute(value)}$2`);
 }
 
-function buildDocument(template, route, appHtml) {
-  const meta = PAGE_META[route];
-  if (!meta) throw new Error(`Prerender: no PAGE_META entry for "${route}"`);
-
+function buildDocument(template, route, appHtml, meta) {
   const canonical = route === "/" ? `${SITE_URL}/` : `${SITE_URL}${route}`;
 
   let html = template;
@@ -85,23 +81,40 @@ function buildDocument(template, route, appHtml) {
   return html.replace(rootDiv, `<div id="root">${appHtml}</div>`);
 }
 
-/** "/" -> dist/index.html, "/projects" -> dist/projects/index.html. */
+/**
+ * "/" -> dist/index.html, "/projects" -> dist/projects/index.html,
+ * "/blog/my-post" -> dist/blog/my-post/index.html.
+ */
 function outputPath(route) {
   if (route === "/") return join(distDir, "index.html");
   if (route === "/404") return join(distDir, "404.html");
-  return join(distDir, route.slice(1), "index.html");
+  return join(distDir, ...route.slice(1).split("/"), "index.html");
 }
 
 const template = await readFile(join(distDir, "index.html"), "utf8");
 
-// The catch-all route renders <NotFound />; Cloudflare Pages serves
-// dist/404.html (with a 404 status) for anything that has no file.
-const routes = [...PRERENDER_ROUTES, "/404"];
+// Static routes: meta comes from PAGE_META. The catch-all renders <NotFound />;
+// Cloudflare serves dist/404.html (real 404 status) for anything with no file.
+const staticJobs = [...PRERENDER_ROUTES, "/404"].map((route) => {
+  const meta = PAGE_META[route];
+  if (!meta) throw new Error(`Prerender: no PAGE_META entry for "${route}"`);
+  return { route, meta };
+});
 
-for (const route of routes) {
+// One job per blog post — same file-reading logic as the app (getAllPosts),
+// reached here through the SSR bundle. Meta comes from the post's frontmatter.
+const blogJobs = getAllPosts().map((post) => ({
+  route: `/blog/${post.slug}`,
+  meta: {
+    title: `${post.title} — Njoh Simplice Junior`,
+    description: post.excerpt,
+  },
+}));
+
+for (const { route, meta } of [...staticJobs, ...blogJobs]) {
   const appHtml = await render(route);
   const file = outputPath(route);
   await mkdir(dirname(file), { recursive: true });
-  await writeFile(file, buildDocument(template, route, appHtml), "utf8");
-  console.log(`prerendered ${route.padEnd(16)} -> ${file.slice(root.length + 1)}`);
+  await writeFile(file, buildDocument(template, route, appHtml, meta), "utf8");
+  console.log(`prerendered ${route.padEnd(40)} -> ${file.slice(root.length + 1)}`);
 }

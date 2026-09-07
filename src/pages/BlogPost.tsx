@@ -64,7 +64,7 @@ export default function BlogPost() {
   // usePageMeta resets keywords / image / og:type when leaving for another route.
   useEffect(() => {
     if (!post) return;
-    document.title = `${post.title} — Njoh Simplice Junior`;
+    document.title = `${post.title} | Njoh Simplice Junior`;
     setDescription(post.excerpt);
     setKeywords(post.tags.join(", "));
     setSocialImage(`${SITE_URL}${post.coverImage}`);
@@ -75,7 +75,7 @@ export default function BlogPost() {
 
   return (
     <section className="bg-brand-black px-4 py-16 text-on-dark sm:px-8 md:py-24">
-      <article className="mx-auto max-w-[70ch]">
+      <article className="mx-auto max-w-4xl">
         <Link
           to="/blog"
           className="font-body text-sm text-on-dark underline decoration-on-dark-muted/50 underline-offset-2 hover:decoration-on-dark focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-on-dark"

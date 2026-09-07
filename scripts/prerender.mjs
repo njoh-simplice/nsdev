@@ -118,7 +118,7 @@ const staticJobs = [...PRERENDER_ROUTES, "/404"].map((route) => {
 const blogJobs = getAllPosts().map((post) => ({
   route: `/blog/${post.slug}`,
   meta: {
-    title: `${post.title} — Njoh Simplice Junior`,
+    title: `${post.title} | Njoh Simplice Junior`,
     description: post.excerpt,
     keywords: post.tags.join(", "),
     image: `${SITE_URL}${post.coverImage}`,

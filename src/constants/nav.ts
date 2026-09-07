@@ -8,8 +8,8 @@ export interface NavItem {
 /** Primary navigation — shared by the header and the footer. */
 export const NAV_ITEMS: NavItem[] = [
   { to: "/", label: "Home", end: true },
-  { to: "/about", label: "About", end: false },
   { to: "/projects", label: "Projects", end: false },
+  { to: "/about", label: "About", end: false },
   { to: "/blog", label: "Blog", end: false },
   { to: "/contact", label: "Contact", end: false },
 ];

@@ -27,4 +27,10 @@ function markdownFrontmatter(): Plugin {
 
 export default defineConfig({
   plugins: [react(), tailwindcss(), markdownFrontmatter()],
+  build: {
+    // react-markdown + the unified/micromark stack push the single bundle a
+    // little past the 500 kB default. It's a deliberate trade (see routes.tsx:
+    // the blog post route stays eager so prerendered articles don't flash).
+    chunkSizeWarningLimit: 700,
+  },
 });

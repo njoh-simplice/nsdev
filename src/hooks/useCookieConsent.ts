@@ -21,16 +21,26 @@ function readStoredChoice(): ConsentChoice | null {
 /**
  * GDPR-style consent gate: GA4 never loads until the visitor explicitly
  * accepts. The choice is remembered in localStorage; `choice === null` means
- * no decision has been made yet, which is what shows the banner.
+ * no decision has been made yet.
+ *
+ * `ready` is false until the stored choice has been read on the client. The
+ * prerendered HTML therefore ships without the banner, and returning visitors
+ * never see it flash before their saved choice is applied.
  */
 export function useCookieConsent() {
-  const [choice, setChoice] = useState<ConsentChoice | null>(readStoredChoice);
+  const [choice, setChoice] = useState<ConsentChoice | null>(null);
+  const [ready, setReady] = useState(false);
+
+  useEffect(() => {
+    setChoice(readStoredChoice());
+    setReady(true);
+  }, []);
 
   // Returning visitor who already accepted: load GA4 without showing the
   // banner again.
   useEffect(() => {
-    if (choice === "accepted") loadAnalytics();
-  }, [choice]);
+    if (ready && choice === "accepted") loadAnalytics();
+  }, [ready, choice]);
 
   const accept = useCallback(() => {
     try {
@@ -50,5 +60,5 @@ export function useCookieConsent() {
     setChoice("declined");
   }, []);
 
-  return { choice, accept, decline };
+  return { ready, choice, accept, decline };
 }

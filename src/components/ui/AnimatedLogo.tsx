@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { usePrefersReducedMotion } from "../../hooks/usePrefersReducedMotion";
 
 const GIF_SRC = "/images/logo.gif";
 
@@ -35,9 +36,7 @@ export default function AnimatedLogo({ className = "" }: { className?: string })
     };
   }, []);
 
-  const prefersReducedMotion = window.matchMedia(
-    "(prefers-reduced-motion: reduce)",
-  ).matches;
+  const prefersReducedMotion = usePrefersReducedMotion();
   const showAnimated = isHovering && !prefersReducedMotion;
 
   return (

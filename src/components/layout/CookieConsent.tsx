@@ -7,9 +7,11 @@ import { useCookieConsent } from "../../hooks/useCookieConsent";
  * visitor makes a choice — GA4 (src/libs/analytics.ts) only loads on Accept.
  */
 export default function CookieConsent() {
-  const { choice, accept, decline } = useCookieConsent();
+  const { ready, choice, accept, decline } = useCookieConsent();
 
-  if (choice !== null) return null;
+  // Nothing until the stored choice has been read (keeps the banner out of the
+  // prerendered HTML and stops it flashing for visitors who already chose).
+  if (!ready || choice !== null) return null;
 
   return (
     <div

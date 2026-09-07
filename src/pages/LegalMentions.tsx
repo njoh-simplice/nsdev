@@ -20,10 +20,7 @@ function resetCookieConsent() {
 }
 
 export default function LegalMentions() {
-  usePageMeta(
-    "Legal Mentions | Njoh Simplice Junior",
-    "Legal information for nsdev.me: site editor, hosting, intellectual property, personal data and cookies.",
-  );
+  usePageMeta("/legal-mentions");
 
   return (
     <div className="bg-brand-black px-4 py-16 text-on-dark sm:px-8 md:py-24">

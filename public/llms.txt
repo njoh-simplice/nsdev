@@ -5,6 +5,7 @@
 ## Pages
 
 - [Home](https://nsdev.me/): Introduction, about, working process, featured projects, work experience.
+- [About](https://nsdev.me/about): Who Njoh Simplice Junior is, specialties, technologies, services, location and contact details.
 - [Projects](https://nsdev.me/projects): Full list of delivered client projects (WordPress sites, web and mobile apps).
 - [Blog](https://nsdev.me/blog): Not published yet.
 - [Contact](https://nsdev.me/contact): Contact details and an enquiry form.

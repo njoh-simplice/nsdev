@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import portrait from "../../assets/images/njoh-simplice-junior-portrait.webp";
 import webIntegrationImg from "../../assets/images/hoverAbout/Web-integration.webp";
 import mobileDevelopmentImg from "../../assets/images/hoverAbout/mobile-development.webp";
@@ -62,6 +63,16 @@ export default function About() {
             clearly, and I&rsquo;m always looking for ways to make a project
             better before you even ask.
           </p>
+          {/* Keeps /about internally linked — it's deliberately out of the
+              main nav, so this is the crawl path to it. */}
+          <div className="mt-4 text-center md:mt-6 md:text-left">
+            <Link
+              to="/about"
+              className="inline-block font-body font-semibold text-on-light underline decoration-on-light-muted/40 underline-offset-4 hover:decoration-on-light focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-on-light"
+            >
+              Learn more about me &rarr;
+            </Link>
+          </div>
         </div>
 
         {/* Right: photo + specialty list (stacks below the text on mobile) */}

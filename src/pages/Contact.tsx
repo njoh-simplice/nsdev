@@ -139,10 +139,7 @@ const labelClass = "font-body text-sm text-on-dark";
 const errorClass = "font-body text-sm font-medium text-on-dark-muted";
 
 export default function Contact() {
-  usePageMeta(
-    "Contact | Njoh Simplice Junior",
-    "Get in touch with Njoh Simplice Junior — email contact@nsdev.me, phone +237 652 02 59 01, based in Yaoundé, Cameroon.",
-  );
+  usePageMeta("/contact");
 
   const [form, setForm] = useState<FormState>(EMPTY_FORM);
   const [touched, setTouched] = useState<

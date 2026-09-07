@@ -4,10 +4,7 @@ import { usePageMeta } from "../hooks/usePageMeta";
 // `BlogPost` from src/types/blog.ts and render a list here instead of the
 // empty state below.
 export default function Blog() {
-  usePageMeta(
-    "Blog | Njoh Simplice Junior",
-    "Articles and notes from Njoh Simplice Junior on web development, WordPress and SEO. Nothing published yet.",
-  );
+  usePageMeta("/blog");
 
   return (
     <section className="flex min-h-full flex-col items-center justify-center bg-brand-black px-4 py-16 text-center text-on-dark sm:px-8 md:py-24">

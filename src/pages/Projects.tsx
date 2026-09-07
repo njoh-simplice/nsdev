@@ -6,10 +6,7 @@ import { usePageMeta } from "../hooks/usePageMeta";
 const delivered = projects.filter((project) => project.isDisplay);
 
 export default function Projects() {
-  usePageMeta(
-    "Projects | Njoh Simplice Junior",
-    "Websites, web apps and mobile apps delivered by Njoh Simplice Junior for clients in Cameroon and France.",
-  );
+  usePageMeta("/projects");
 
   return (
     <section className="bg-brand-white px-4 py-16 text-on-light sm:px-8 md:py-24">

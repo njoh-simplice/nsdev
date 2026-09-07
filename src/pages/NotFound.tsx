@@ -4,10 +4,7 @@ import sparkle from "../assets/images/sparkle-accent.webp";
 import { usePageMeta } from "../hooks/usePageMeta";
 
 export default function NotFound() {
-  usePageMeta(
-    "Page Not Found | Njoh Simplice Junior",
-    "The page you're looking for doesn't exist or has moved.",
-  );
+  usePageMeta("/404");
 
   // A 404 can be reached by a hard load of a bad URL, where <ScrollRestoration>
   // doesn't run — force the viewport to the top on mount.

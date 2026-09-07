@@ -219,6 +219,10 @@ export default function Contact() {
           />
         </div>
 
+        <h2 className="mt-10 text-center font-body text-sm uppercase tracking-wide text-on-dark-muted">
+          Contact form
+        </h2>
+
         {submitted ? (
           <div
             role="status"

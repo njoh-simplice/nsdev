@@ -3,9 +3,51 @@ import { Link, useParams } from "react-router-dom";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import NotFound from "./NotFound";
-import { getPostBySlug } from "../features/blog/lib/posts";
+import { getPostBySlug, type BlogPost as Post } from "../features/blog/lib/posts";
 import { formatPostDate } from "../features/blog/lib/formatDate";
 import { markdownComponents } from "../features/blog/markdownComponents";
+import { SITE_URL } from "../constants/pageMeta";
+
+const AUTHOR = { "@type": "Person", name: "Njoh Simplice Junior" } as const;
+
+/**
+ * BlogPosting + (when the post has FAQ frontmatter) FAQPage JSON-LD, so the
+ * page is eligible for classic rich results and AI-answer citation. Baked into
+ * the prerendered HTML via renderToString. `<` is escaped so the JSON can't
+ * close the surrounding <script>.
+ */
+function articleSchema(post: Post): string {
+  const url = `${SITE_URL}/blog/${post.slug}`;
+  const graph: unknown[] = [
+    {
+      "@type": "BlogPosting",
+      headline: post.title,
+      description: post.excerpt,
+      author: AUTHOR,
+      publisher: AUTHOR,
+      mainEntityOfPage: url,
+      image: `${SITE_URL}${post.coverImage}`,
+      datePublished: post.date,
+      dateModified: post.date,
+    },
+  ];
+
+  if (post.faq.length > 0) {
+    graph.push({
+      "@type": "FAQPage",
+      mainEntity: post.faq.map((item) => ({
+        "@type": "Question",
+        name: item.question,
+        acceptedAnswer: { "@type": "Answer", text: item.answer },
+      })),
+    });
+  }
+
+  return JSON.stringify({ "@context": "https://schema.org", "@graph": graph }).replace(
+    /</g,
+    "\\u003c",
+  );
+}
 
 export default function BlogPost() {
   const { slug } = useParams<{ slug: string }>();
@@ -58,6 +100,11 @@ export default function BlogPost() {
             {post.content}
           </ReactMarkdown>
         </div>
+
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: articleSchema(post) }}
+        />
       </article>
     </section>
   );

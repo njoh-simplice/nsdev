@@ -19,6 +19,11 @@ export interface BlogPost {
   coverImage: string;
   coverAlt: string;
   tags: string[];
+  /**
+   * Optional Q&A. Drives the FAQPage JSON-LD on the post page (GEO / AI-answer
+   * citation). The visible FAQ section is written in the Markdown body.
+   */
+  faq: { question: string; answer: string }[];
   /** Markdown body (frontmatter stripped). Rendered with react-markdown. */
   content: string;
 }
@@ -58,6 +63,18 @@ function parsePost(path: string, mod: MarkdownModule): BlogPost {
     ? data.tags.map((tag: unknown) => String(tag))
     : [];
 
+  const faq = Array.isArray(data.faq)
+    ? data.faq
+        .map((item: unknown) => {
+          const entry = (item ?? {}) as Record<string, unknown>;
+          return {
+            question: String(entry.question ?? ""),
+            answer: String(entry.answer ?? ""),
+          };
+        })
+        .filter((item) => item.question !== "" && item.answer !== "")
+    : [];
+
   return {
     slug: data.slug as string,
     title: data.title as string,
@@ -66,6 +83,7 @@ function parsePost(path: string, mod: MarkdownModule): BlogPost {
     coverImage: data.coverImage as string,
     coverAlt: data.coverAlt as string,
     tags,
+    faq,
     content: mod.content,
   };
 }

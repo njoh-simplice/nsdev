@@ -8,16 +8,16 @@ export default function Blog() {
   usePageMeta("/blog");
 
   return (
-    <section className="bg-brand-cream px-4 py-16 text-on-light sm:px-8 md:py-24">
-      <h1 className="text-center font-display text-[1.75rem] font-bold uppercase leading-tight text-on-light md:text-[2.5rem]">
+    <section className="bg-brand-black px-4 py-16 text-on-dark sm:px-8 md:py-24">
+      <h1 className="text-center font-display text-[1.75rem] font-bold uppercase leading-tight text-on-dark md:text-[2.5rem]">
         Blog
       </h1>
-      <p className="mx-auto mt-4 max-w-md text-center font-body text-on-light-muted md:text-lg">
+      <p className="mx-auto mt-4 max-w-md text-center font-body text-on-dark-muted md:text-lg">
         Notes on web development, WordPress and SEO.
       </p>
 
       {posts.length === 0 ? (
-        <p className="mt-12 text-center font-body text-on-light-muted md:text-lg">
+        <p className="mt-12 text-center font-body text-on-dark-muted md:text-lg">
           No posts yet — check back soon.
         </p>
       ) : (

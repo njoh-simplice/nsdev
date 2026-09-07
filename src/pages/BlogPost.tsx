@@ -24,11 +24,11 @@ export default function BlogPost() {
   if (!post) return <NotFound />;
 
   return (
-    <section className="bg-brand-cream px-4 py-16 text-on-light sm:px-8 md:py-24">
+    <section className="bg-brand-black px-4 py-16 text-on-dark sm:px-8 md:py-24">
       <article className="mx-auto max-w-[70ch]">
         <Link
           to="/blog"
-          className="font-body text-sm text-on-light underline decoration-on-light-muted/50 underline-offset-2 hover:decoration-on-light focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-on-light"
+          className="font-body text-sm text-on-dark underline decoration-on-dark-muted/50 underline-offset-2 hover:decoration-on-dark focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-on-dark"
         >
           ← Back to Blog
         </Link>
@@ -36,14 +36,14 @@ export default function BlogPost() {
         <img
           src={post.coverImage}
           alt={post.coverAlt}
-          className="mt-6 aspect-[1200/554] w-full object-cover"
+          className="mt-6 aspect-[1200/554] w-full rounded-card object-cover"
         />
 
-        <h1 className="mt-8 font-display text-[1.75rem] font-bold leading-tight text-on-light md:text-[2.5rem]">
+        <h1 className="mt-8 font-display text-[1.75rem] font-bold leading-tight text-on-dark md:text-[2.5rem]">
           {post.title}
         </h1>
 
-        <p className="mt-3 font-body text-sm text-on-light-muted">
+        <p className="mt-3 font-body text-sm text-on-dark-muted">
           <time dateTime={post.date}>{formatPostDate(post.date)}</time>
           {post.tags.length > 0 && (
             <span> · {post.tags.join(", ")}</span>

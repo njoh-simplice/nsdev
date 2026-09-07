@@ -9,16 +9,16 @@ import { formatPostDate } from "./lib/formatDate";
  */
 export default function BlogCard({ post }: { post: BlogPost }) {
   return (
-    <article className="h-full bg-brand-black p-2">
+    <article className="h-full rounded-card bg-brand-charcoal p-2">
       <Link
         to={`/blog/${post.slug}`}
-        className="flex h-full flex-col focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-on-dark"
+        className="flex h-full flex-col rounded-card focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-on-dark"
       >
         <img
           src={post.coverImage}
           alt={post.coverAlt}
           loading="lazy"
-          className="aspect-[1200/554] w-full object-cover"
+          className="aspect-[1200/554] w-full rounded-lg object-cover"
         />
         <div className="mt-4 flex flex-1 flex-col px-1 pb-1">
           <h2 className="font-body text-lg font-semibold text-on-dark">

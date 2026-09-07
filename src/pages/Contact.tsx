@@ -17,25 +17,32 @@ function ContactCard({
   label,
   value,
   href,
+  external = false,
+  ariaLabel,
 }: {
   icon: ReactNode;
   label: string;
   value: string;
   href: string;
+  /** Opens in a new tab (WhatsApp); `mailto:` links stay in the same tab. */
+  external?: boolean;
+  ariaLabel: string;
 }) {
   return (
-    <div className="flex flex-col items-center gap-2 rounded-card border border-on-dark-muted/15 bg-brand-charcoal p-6 text-center transition-colors hover:border-on-dark-muted/40">
+    <a
+      href={href}
+      aria-label={ariaLabel}
+      {...(external ? { target: "_blank", rel: "noreferrer" } : {})}
+      className="group flex flex-col items-center gap-2 rounded-card border border-on-dark-muted/15 bg-brand-charcoal p-6 text-center transition-colors hover:border-on-dark-muted/40 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-on-dark"
+    >
       <span className="text-brand-lime">{icon}</span>
       <span className="font-body text-xs uppercase tracking-wide text-on-dark-muted">
         {label}
       </span>
-      <a
-        href={href}
-        className="font-body font-semibold text-on-dark hover:text-brand-lime focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-on-dark"
-      >
+      <span className="font-body font-semibold text-on-dark transition-colors group-hover:text-brand-lime">
         {value}
-      </a>
-    </div>
+      </span>
+    </a>
   );
 }
 
@@ -182,39 +189,40 @@ export default function Contact() {
 
   return (
     <section className="bg-brand-black px-4 py-16 text-on-dark sm:px-8 md:py-24">
-      <div className="mx-auto max-w-5xl">
-        <h1 className="font-display text-[1.75rem] text-center font-bold uppercase leading-tight md:text-[2.5rem]">
-          Contact
+      <div className="mx-auto max-w-3xl">
+        <h1 className="text-center font-display text-[1.75rem] font-bold uppercase leading-tight md:text-[2.5rem]">
+          Have a project in mind?
         </h1>
+        <p className="mx-auto mt-4 max-w-xl text-center font-body text-on-dark-muted md:text-lg">
+          Tell me what you&rsquo;re building, what problem you&rsquo;re solving,
+          and your timeline.
+        </p>
 
-        {/* SECTION 1 — contact info */}
-        <h2 className="mt-10 font-display text-center text-lg font-bold uppercase text-on-dark">
+        <h2 className="mt-10 text-center font-body text-sm uppercase tracking-wide text-on-dark-muted">
           Reach me directly
         </h2>
         <div className="mt-4 grid gap-4 sm:grid-cols-2">
           <ContactCard
             icon={PhoneIcon}
-            label="Phone"
+            label="WhatsApp"
             value="+237 652 02 59 01"
-            href="tel:+237652025901"
+            href="https://wa.me/237652025901"
+            external
+            ariaLabel="Chat on WhatsApp with +237 652 02 59 01"
           />
           <ContactCard
             icon={MailIcon}
             label="Email"
             value="contact@nsdev.me"
             href="mailto:contact@nsdev.me"
+            ariaLabel="Email contact@nsdev.me"
           />
         </div>
-
-        {/* SECTION 2 — form */}
-        <h2 className="mt-12 font-display text-center text-lg font-bold uppercase text-on-dark">
-          Send a message
-        </h2>
 
         {submitted ? (
           <div
             role="status"
-            className="mt-4 rounded-card border border-on-dark-muted/15 bg-brand-charcoal p-6 text-center"
+            className="mt-10 rounded-card border border-on-dark-muted/15 bg-brand-charcoal p-6 text-center"
           >
             <p className="font-display text-xl font-bold text-on-dark">
               Message sent
@@ -225,7 +233,7 @@ export default function Contact() {
             </p>
           </div>
         ) : (
-          <form noValidate onSubmit={handleSubmit} className="mt-4 space-y-4">
+          <form noValidate onSubmit={handleSubmit} className="mt-10 space-y-4">
             {TEXT_FIELDS.map((field) => {
               const error = errorFor(field.name);
               const required = field.name !== "phone";

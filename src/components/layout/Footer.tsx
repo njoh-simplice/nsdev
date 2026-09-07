@@ -22,7 +22,7 @@ export default function Footer() {
       {/* 1. Nav + back-to-top */}
       <div className="flex flex-col items-center gap-4 px-4 sm:flex-row sm:flex-wrap sm:justify-between sm:gap-x-6 sm:gap-y-4 sm:px-8">
         <nav>
-          <ul className="flex flex-wrap items-center gap-x-6 gap-y-2">
+          <ul className="flex flex-wrap items-center gap-x-3 md:gap-x-6 gap-y-2">
             {NAV_ITEMS.map(({ to, label, end }) => (
               <li key={to}>
                 <NavLink to={to} end={end} className={navLinkClass}>

@@ -19,6 +19,11 @@ export const PAGE_META = {
     description:
       "Njoh Simplice Junior, freelance software developer and WordPress/SEO specialist in Yaoundé, Cameroon. Websites and web/mobile apps from Figma mockup to live site, usually in under two weeks.",
   },
+  "/about": {
+    title: "About Njoh Simplice Junior | Software Developer & SEO Specialist",
+    description:
+      "Who is Njoh Simplice Junior? A software developer, WordPress integrator and SEO specialist in Yaoundé, Cameroon, working remotely with clients across Cameroon, France and internationally.",
+  },
   "/projects": {
     title: "Projects | Njoh Simplice Junior",
     description:
@@ -50,6 +55,7 @@ export type PageMetaKey = keyof typeof PAGE_META;
 /** Routes prerendered to static HTML at build time (see scripts/prerender.mjs). */
 export const PRERENDER_ROUTES = [
   "/",
+  "/about",
   "/projects",
   "/blog",
   "/contact",

@@ -13,6 +13,12 @@ export interface SocialLink {
   Icon: IconType;
 }
 
+/**
+ * Pulled out because it's referenced outside the icon row too — the /about
+ * page links it in prose and in its JSON-LD `sameAs`. One URL, one place.
+ */
+export const LINKEDIN_URL = "https://www.linkedin.com/in/njoh-simplice-junior";
+
 /** Social profiles — shared by the Hero and the footer. */
 export const SOCIAL_LINKS: SocialLink[] = [
   {
@@ -37,7 +43,7 @@ export const SOCIAL_LINKS: SocialLink[] = [
   },
   {
     label: "LinkedIn",
-    href: "https://www.linkedin.com/in/njoh-simplice-junior",
+    href: LINKEDIN_URL,
     Icon: FaLinkedinIn,
   },
 ];

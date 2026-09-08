@@ -17,7 +17,7 @@ export const PAGE_META = {
     title:
       "Njoh Simplice Junior | Software Developer & WordPress/SEO Specialist",
     description:
-      "Njoh Simplice Junior, freelance software developer and WordPress/SEO specialist in Yaoundé, Cameroon. Websites and web/mobile apps from Figma mockup to live site, usually in under two weeks.",
+      "I am a Software developer and content creator. I craft websites and mobile apps that align with your brand and engage your audience.",
   },
   "/about": {
     title: "About Njoh Simplice Junior | Software Developer & SEO Specialist",

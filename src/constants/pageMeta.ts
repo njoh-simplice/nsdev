@@ -14,38 +14,37 @@ export const SITE_URL = "https://nsdev.me";
  */
 export const PAGE_META = {
   "/": {
-    title:
-      "Njoh Simplice Junior | Software Developer & WordPress/SEO Specialist",
+    title: "Njoh Simplice Junior",
     description:
       "I am a Software developer and content creator. I craft websites and mobile apps that align with your brand and engage your audience.",
   },
   "/about": {
-    title: "About Njoh Simplice Junior | Software Developer & SEO Specialist",
+    title: "About",
     description:
       "Who is Njoh Simplice Junior? A software developer, WordPress integrator and SEO specialist in Yaoundé, Cameroon, working remotely with clients across Cameroon, France and internationally.",
   },
   "/projects": {
-    title: "Projects | Njoh Simplice Junior",
+    title: "Projects",
     description:
       "Websites, web apps and mobile apps delivered by Njoh Simplice Junior for clients in Cameroon and France.",
   },
   "/blog": {
-    title: "Blog | Njoh Simplice Junior",
+    title: "Blog",
     description:
       "Articles and notes from Njoh Simplice Junior on web development, WordPress and SEO. Nothing published yet.",
   },
   "/contact": {
-    title: "Contact | Njoh Simplice Junior",
+    title: "Contact",
     description:
       "Get in touch with Njoh Simplice Junior — email contact@nsdev.me, phone +237 652 02 59 01, based in Yaoundé, Cameroon.",
   },
   "/legal-mentions": {
-    title: "Legal Mentions | Njoh Simplice Junior",
+    title: "Legal Mentions",
     description:
       "Legal information for nsdev.me: site editor, hosting, intellectual property, personal data and cookies.",
   },
   "/404": {
-    title: "Page Not Found | Njoh Simplice Junior",
+    title: "Page Not Found",
     description: "The page you're looking for doesn't exist or has moved.",
   },
 } as const satisfies Record<string, PageMeta>;

@@ -49,7 +49,7 @@ export default function Hero() {
           (at night)
         </span>
         . I craft websites and mobile apps that align with your brand and engage
-        your audience
+        your audience.
       </p>
 
       {/* 3. Buttons — secondary first (left), primary second (right) */}

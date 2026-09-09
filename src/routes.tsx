@@ -4,6 +4,7 @@ import Home from "./pages/Home";
 import About from "./pages/About";
 import Projects from "./pages/Projects";
 import Blog from "./pages/Blog";
+import BlogPost from "./pages/BlogPost";
 import Contact from "./pages/Contact";
 import LegalMentions from "./pages/LegalMentions";
 import NotFound from "./pages/NotFound";
@@ -40,6 +41,10 @@ export const routes: RouteObject[] = [
       { path: "about", element: <About /> },
       { path: "projects", element: <Projects /> },
       { path: "blog", element: <Blog /> },
+      // Eager, not lazy: every post is prerendered, so a lazy route here would
+      // make hydrateRoot discard the server-rendered article and flash blank
+      // while its chunk downloads (and warn about a missing HydrateFallback).
+      { path: "blog/:slug", element: <BlogPost /> },
       { path: "contact", element: <Contact /> },
       { path: "legal-mentions", element: <LegalMentions /> },
       ...devRoutes,

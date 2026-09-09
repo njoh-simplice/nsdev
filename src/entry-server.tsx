@@ -44,3 +44,8 @@ export {
   PRERENDER_ROUTES,
   SITE_URL,
 } from "./constants/pageMeta";
+
+// Re-exported for scripts/prerender.mjs and scripts/generate-sitemap.mjs, which
+// run under plain Node and can't use the `import.meta.glob` inside posts.ts —
+// but they can import it from this Vite-bundled SSR entry.
+export { getAllPosts } from "./features/blog/lib/posts";

@@ -25,7 +25,7 @@ export const projects: Project[] = [
     id: "njohfolio",
     project_name: "Njohfolio",
     image: "/images/projects/njohfolio.webp",
-    link: "https://njohfolio.vercel.app",
+    link: "https://github.com/njoh-simplice/NJOHFOLIO",
     type: "Website",
     description: "A personal portfolio.",
     isDisplay: true,

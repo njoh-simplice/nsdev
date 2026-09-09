@@ -6,6 +6,16 @@ export interface PageMeta {
 export const SITE_URL = "https://nsdev.me";
 
 /**
+ * Site-wide fallbacks — must match the hard-coded tags in index.html. Blog
+ * posts override keywords / og:image / og:type per-post (scripts/prerender.mjs
+ * at build time, BlogPost.tsx on SPA nav); usePageMeta resets them back to
+ * these on every other route so a post's values don't leak after navigation.
+ */
+export const SITE_KEYWORDS =
+  "Njoh Simplice Junior, software developer, web developer, WordPress developer, SEO specialist, freelance developer, Yaoundé, Cameroon web developer, React developer, Laravel developer, web design, mobile app development";
+export const SITE_OG_IMAGE = "https://nsdev.me/images/logo.gif";
+
+/**
  * Per-route `<title>` / `<meta name="description">`.
  *
  * Single source of truth: `usePageMeta` applies these on client-side
@@ -31,7 +41,7 @@ export const PAGE_META = {
   "/blog": {
     title: "Blog",
     description:
-      "Articles and notes from Njoh Simplice Junior on web development, WordPress and SEO. Nothing published yet.",
+      "Notes from Njoh Simplice Junior on web development, WordPress and SEO — practical write-ups from client work.",
   },
   "/contact": {
     title: "Contact",

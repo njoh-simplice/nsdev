@@ -38,4 +38,4 @@ jobs:
           prompt: |
             Run the seo-rank-watch skill now. Follow .claude/skills/seo-rank-watch/SKILL.md exactly,
             start to finish, for one full cycle. End with the cycle report described in that file.
-          claude_args: '--allowedTools "Bash,Read,Write,Edit,Glob,Grep"'
+          claude_args: '--allowedTools "Bash,Read,Write,Edit,Glob,Grep" --model claude-sonnet-5'

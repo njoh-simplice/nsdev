@@ -1,0 +1,40 @@
+name: SEO Rank Watch — daily cycle
+
+on:
+  schedule:
+    # 06:00 UTC daily = 07:00 Africa/Lagos. Adjust to taste.
+    - cron: '0 6 * * *'
+  workflow_dispatch: {} # lets you trigger a run manually from the Actions tab while testing
+
+permissions:
+  contents: write # the agent commits data-file updates and pushes edit branches
+  pull-requests: write # the agent opens PRs for post edits / noindex / structural changes
+
+jobs:
+  run-cycle:
+    runs-on: ubuntu-latest
+    env:
+      GOOGLE_SERVICE_ACCOUNT_KEY: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_KEY }}
+      GSC_SITE_URL: ${{ secrets.GSC_SITE_URL }}
+      SEO_MIN_IMPRESSIONS: '10'
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }} # lets the agent's `gh pr create` calls authenticate
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0 # full history, so the agent can diff/snapshot cleanly
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run the seo-rank-watch cycle
+        uses: anthropics/claude-code-action@v1
+        with:
+          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          prompt: |
+            Run the seo-rank-watch skill now. Follow .claude/skills/seo-rank-watch/SKILL.md exactly,
+            start to finish, for one full cycle. End with the cycle report described in that file.
+          claude_args: '--allowedTools "Bash,Read,Write,Edit,Glob,Grep"'

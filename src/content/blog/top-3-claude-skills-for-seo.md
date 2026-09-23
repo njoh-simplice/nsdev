@@ -122,6 +122,35 @@ runs this as a single-page checklist, built around the "ski ramp" structure
 (front-loaded answers and question-based headings), since roughly the first
 third of a page is where most AI citations come from.
 
+## How to Install a Claude Skill
+
+Each of the three above is a `SKILL.md` file: a Markdown document with a short
+YAML header (a `name`, and a `description` Claude reads to decide when the
+skill is relevant) followed by the instructions themselves. Installing one
+means putting that file where Claude looks for it, and where that is depends
+on which surface you work in.
+
+**Claude Code.** Skills live one folder per skill. Save the file as
+`.claude/skills/<skill-name>/SKILL.md` inside a repository to share it with
+everyone who clones that repo, or under `~/.claude/skills/<skill-name>/SKILL.md`
+to keep it available across all of your own projects. It is picked up on the
+next session, with no separate registration step.
+
+**Claude.ai.** Turn on code execution in your settings first, since skills run
+in that sandbox. Then add the skill from the Skills section of your settings,
+uploading the skill folder (zipped, with `SKILL.md` at its root). Once enabled,
+it loads automatically in any conversation where its description matches what
+you are asking for.
+
+**The API.** Upload the skill, then reference it in the request alongside the
+code execution tool, so it is available to the model for that run.
+
+Two habits save time on the first install. Keep one skill per folder, named for
+what it does, because that folder name and the `description` line are what
+Claude matches against your request. And read any skill you did not write
+yourself before you enable it: a skill is a set of instructions the model will
+follow, so it deserves the same look you would give a script before running it.
+
 ## How the Three Skills Work Together
 
 In practice these run in sequence, then repeat. Audit the site, so you know

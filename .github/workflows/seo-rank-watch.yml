@@ -9,6 +9,7 @@ on:
 permissions:
   contents: write # the agent commits data-file updates and pushes edit branches
   pull-requests: write # the agent opens PRs for post edits / noindex / structural changes
+  id-token: write
 
 jobs:
   run-cycle:

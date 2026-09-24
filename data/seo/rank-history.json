@@ -7,5 +7,14 @@
     "clicks": 0,
     "lowConfidence": true,
     "note": "Below minimum impression threshold (10); treat as noise, not signal."
+  },
+  {
+    "keyword": "claude skills for seo",
+    "date": "2026-09-21",
+    "avgPosition": null,
+    "impressions": 0,
+    "clicks": 0,
+    "lowConfidence": true,
+    "note": "Below minimum impression threshold (10); treat as noise, not signal."
   }
 ]

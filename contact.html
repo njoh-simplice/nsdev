@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact | nsdev</title>
+    <meta
+      name="description"
+      content="Get in touch with nsdev about the tools I develop."
+    />
+    <meta name="theme-color" content="#0a0a0a" />
+    <link rel="icon" href="public/favicon.ico" sizes="48x48" />
+    <link rel="icon" type="image/png" href="public/favicon.png" />
+    <link rel="apple-touch-icon" href="public/apple-touch-icon.png" />
+    <link rel="manifest" href="public/manifest.json" />
+    <link
+      rel="preload"
+      href="public/assets/fonts/host-grotesk-latin.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link rel="stylesheet" href="src/css/main.css" />
+    <script src="src/js/main.js" defer></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container site-header__inner">
+        <a class="brand" href="index.html">nsdev</a>
+        <button
+          class="nav-toggle"
+          type="button"
+          aria-expanded="false"
+          aria-controls="site-nav"
+        >
+          Menu
+        </button>
+        <nav id="site-nav" class="site-nav" aria-label="Main">
+          <a href="index.html">Home</a>
+          <a href="contact.html" aria-current="page">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="section">
+        <div class="container container--narrow">
+          <h1>Contact</h1>
+          <p class="lead">
+            Have a question or a project in mind? Send a message and I will get
+            back to you.
+          </p>
+
+          <!-- TODO: replace the action with your form endpoint (e.g. Formspree) -->
+          <form
+            class="form"
+            action="https://formspree.io/f/YOUR_FORM_ID"
+            method="POST"
+          >
+            <label for="name">Name</label>
+            <input id="name" name="name" type="text" autocomplete="name" required />
+
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" autocomplete="email" required />
+
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="6" required></textarea>
+
+            <button class="button" type="submit">Send message</button>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>Built and maintained by <strong><a href="https://github.com/njoh-simplice" target="_blank" rel="noopener noreferrer">Njoh Simplice Junior</a>.</strong></p>
+      <nav aria-label="Footer">
+        <a href="contact.html" aria-current="page">Contact</a>
+        <a href="legal.html">Legal notice</a>
+      </nav>
+    </footer>
+  </body>
+</html>

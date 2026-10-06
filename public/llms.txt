@@ -1,0 +1,9 @@
+# nsdev
+
+> A showcase of the tools I develop.
+
+## Pages
+
+- [Home](https://YOUR-DOMAIN/): overview of the tools
+- [Contact](https://YOUR-DOMAIN/contact): contact form
+- [Legal notice](https://YOUR-DOMAIN/legal): publisher and hosting information

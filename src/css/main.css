@@ -1,0 +1,508 @@
+/* ==========================================================================
+   Fonts (self-hosted Host Grotesk, variable weight 300-800)
+   ========================================================================== */
+@font-face {
+  font-family: "Host Grotesk";
+  font-style: normal;
+  font-weight: 300 800;
+  font-display: swap;
+  src: url("../../public/assets/fonts/host-grotesk-latin-ext.woff2")
+    format("woff2");
+  unicode-range:
+    U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304,
+    U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB,
+    U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+  font-family: "Host Grotesk";
+  font-style: normal;
+  font-weight: 300 800;
+  font-display: swap;
+  src: url("../../public/assets/fonts/host-grotesk-latin.woff2") format("woff2");
+  unicode-range:
+    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
+    U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212,
+    U+2215, U+FEFF, U+FFFD;
+}
+
+/* ==========================================================================
+   Variables
+   ========================================================================== */
+:root {
+  /* Palette */
+  --color-black: #000000;
+  --color-neutral-950: #0a0a0a;
+  --color-neutral-900: #171717;
+  --color-neutral-850: #222222;
+  --color-neutral-500: #737373;
+  --color-neutral-300: #c4c4c4;
+  --color-neutral-250: #d4d4d4;
+  --color-neutral-200: #e5e5e5;
+  --color-warm-white: #f6f5f4;
+  --color-white: #ffffff;
+
+  /* Roles */
+  --bg: var(--color-neutral-950);
+  --bg-elevated: var(--color-neutral-900);
+  --border: var(--color-neutral-850);
+  --text: var(--color-white);
+  --text-muted: var(--color-neutral-300);
+  --text-dim: var(--color-neutral-500);
+  --button-bg: var(--color-neutral-200);
+  --button-bg-hover: var(--color-neutral-250);
+  --button-bg-active: var(--color-neutral-300);
+  --button-text: var(--color-neutral-950);
+  --badge-text: var(--color-warm-white);
+  --badge-bg: #f6f5f433; /* warm white, 20% */
+  --badge-border: var(--color-warm-white);
+  --shadow: #00000033; /* black, 20% */
+  --radius: 0.75rem;
+  --radius-card: 1.75rem;
+  --max-width: 78rem;
+  --font:
+    "Host Grotesk", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+/* ==========================================================================
+   Base
+   ========================================================================== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font);
+  line-height: 1.6;
+}
+
+main {
+  flex: 1;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  color: inherit;
+}
+
+h1,
+h2,
+h3 {
+  line-height: 1.15;
+}
+
+/* ==========================================================================
+   Layout
+   ========================================================================== */
+.container {
+  width: 100%;
+  max-width: var(--max-width);
+  margin-inline: auto;
+  padding-inline: 1rem;
+}
+
+.container--narrow {
+  max-width: 40rem;
+}
+
+.section {
+  padding-block: 3rem;
+}
+
+.grid {
+  display: grid;
+  gap: 1.25rem;
+  grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr));
+}
+
+/* ==========================================================================
+   Components
+   ========================================================================== */
+.button {
+  position: relative;
+  display: inline-block;
+  padding: 6px 20px;
+  border: 2px solid var(--border);
+  border-radius: 999px;
+  background: var(--button-bg);
+  color: var(--button-text);
+  font: inherit;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    background-color 0.15s ease,
+    transform 0.15s ease;
+}
+
+/* Hover: slightly darker, lifts by 1px */
+.button:hover {
+  background: var(--button-bg-hover);
+  transform: translateY(-1px);
+}
+
+/* Focus: visible ring for keyboard users only */
+.button:focus-visible,
+.site-nav a:focus-visible,
+.site-footer a:focus-visible {
+  outline: 2px solid var(--text);
+  outline-offset: 3px;
+}
+
+/* Click: pressed in */
+.button:active {
+  background: var(--button-bg-active);
+  transform: translateY(0) scale(0.97);
+}
+
+/* Loading: label hidden (keeps the width), spinner shown, clicks ignored */
+.button.is-loading,
+.button[aria-busy="true"] {
+  color: transparent;
+  cursor: progress;
+  pointer-events: none;
+}
+
+.button.is-loading::after,
+.button[aria-busy="true"]::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  width: 1em;
+  height: 1em;
+  margin: auto;
+  border: 2px solid var(--button-text);
+  border-right-color: transparent;
+  border-radius: 50%;
+  animation: button-spin 0.7s linear infinite;
+}
+
+/* Disabled */
+.button:disabled,
+.button[aria-disabled="true"] {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* A loading button is disabled too, but should stay fully visible */
+.button.is-loading:disabled {
+  opacity: 1;
+  cursor: progress;
+}
+
+@keyframes button-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .button {
+    transition: none;
+  }
+
+  .button:hover,
+  .button:active {
+    transform: none;
+  }
+
+  .button.is-loading::after,
+  .button[aria-busy="true"]::after {
+    animation-duration: 2s;
+  }
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin: 0;
+  padding: 8px 12px;
+  border: 2px solid var(--badge-border);
+  border-radius: 999px;
+  background: var(--badge-bg);
+  color: var(--badge-text);
+  backdrop-filter: blur(6px);
+  font-size: 14px;
+  line-height: 1.2;
+}
+
+.badge__dot {
+  width: 0.65rem;
+  height: 0.65rem;
+  border-radius: 50%;
+  background: var(--badge-text);
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 12px;
+  border: 2px solid var(--border);
+  border-radius: var(--radius-card);
+  background: var(--bg-elevated);
+  box-shadow: 0 0.5rem 1.5rem var(--shadow);
+}
+
+.card__media {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  margin-bottom: 1.5rem;
+  border-radius: var(--radius);
+  background: var(--border);
+  overflow: hidden;
+}
+
+.card__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.card h3 {
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+.card p {
+  margin: 0.5rem 0 1.25rem;
+  color: var(--text-muted);
+}
+
+.site-footer {
+  padding: 3rem 1rem 2.5rem;
+  color: var(--text-dim);
+  font-size: 0.95rem;
+  text-align: center;
+}
+
+.site-footer p {
+  margin: 0;
+}
+
+.site-footer strong {
+  color: var(--text);
+  font-weight: 600;
+}
+
+.site-footer strong a {
+  text-decoration: none;
+}
+
+.site-footer strong a:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.site-footer nav {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 0.75rem;
+}
+
+.site-footer nav a {
+  color: var(--text-dim);
+  font-size: 0.85rem;
+}
+
+.site-footer nav a:hover {
+  color: var(--text);
+}
+
+/* Header (contact and legal pages) */
+.site-header {
+  border-bottom: 1px solid var(--border);
+}
+
+.site-header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding-block: 1rem;
+}
+
+.brand {
+  font-size: 1.25rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.site-nav {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.site-nav a {
+  color: var(--text-muted);
+  text-decoration: none;
+}
+
+.site-nav a:hover,
+.site-nav a[aria-current="page"] {
+  color: var(--text);
+}
+
+.nav-toggle {
+  display: none;
+  padding: 0.4rem 0.8rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: none;
+  color: var(--text);
+  font: inherit;
+  cursor: pointer;
+}
+
+.form {
+  display: grid;
+  gap: 0.5rem;
+  margin-top: 2rem;
+}
+
+.form label {
+  font-weight: 600;
+}
+
+.form input,
+.form textarea {
+  padding: 0.7rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--bg-elevated);
+  color: var(--text);
+  font: inherit;
+}
+
+.form button {
+  justify-self: start;
+  margin-top: 1rem;
+}
+
+/* ==========================================================================
+   Page-specific
+   ========================================================================== */
+/* Home: hero */
+.hero {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  min-height: 36rem;
+  overflow: hidden;
+  text-align: center;
+}
+
+.hero__image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  object-fit: cover;
+  object-position: center 18%;
+}
+
+/* Fade the image into the page background */
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, transparent 60%, var(--bg) 100%);
+}
+
+.hero__content {
+  position: relative;
+  z-index: 1;
+  padding: 3.5rem 1rem 0;
+}
+
+.hero h1 {
+  max-width: 7.2em; /* keeps the two-line break at any size */
+  margin: 1rem auto 0;
+  font-size: clamp(2.5rem, 7vw, 4.5rem);
+  font-weight: 600;
+  letter-spacing: -0.03em;
+}
+
+/* Home: tools */
+.tools {
+  padding-top: 4rem;
+}
+
+.section__header {
+  margin-bottom: 2.5rem;
+  text-align: center;
+}
+
+.section__header h2 {
+  margin: 0 0 0.25rem;
+  font-size: 1.75rem;
+  font-weight: 500;
+}
+
+.section__header p {
+  margin: 0;
+}
+
+.tools__all {
+  margin: 2rem 0 0;
+  text-align: center;
+}
+
+/* Contact and legal */
+.lead {
+  color: var(--text-muted);
+  font-size: 1.15rem;
+}
+
+.prose h2 {
+  margin-top: 2rem;
+}
+
+/* ==========================================================================
+   Responsive
+   ========================================================================== */
+@media (min-width: 48rem) {
+  .hero {
+    min-height: clamp(26rem, 30vw, 32rem);
+  }
+}
+
+@media (max-width: 40rem) {
+  .nav-toggle {
+    display: inline-block;
+  }
+
+  .site-nav {
+    display: none;
+    flex-direction: column;
+    gap: 0.75rem;
+    width: 100%;
+    padding-top: 1rem;
+  }
+
+  .site-nav.is-open {
+    display: flex;
+  }
+}

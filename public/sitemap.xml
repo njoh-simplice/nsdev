@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- TODO: replace YOUR-DOMAIN with your real domain -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://YOUR-DOMAIN/</loc>
+  </url>
+  <url>
+    <loc>https://YOUR-DOMAIN/contact</loc>
+  </url>
+  <url>
+    <loc>https://YOUR-DOMAIN/legal</loc>
+  </url>
+</urlset>

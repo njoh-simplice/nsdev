@@ -1,0 +1,4 @@
+/robots.txt /public/robots.txt 200
+/sitemap.xml /public/sitemap.xml 200
+/llms.txt /public/llms.txt 200
+/favicon.ico /public/favicon.ico 200

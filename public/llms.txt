@@ -1,9 +1,14 @@
 # nsdev
 
-> A showcase of the tools I develop.
+> A showcase of the tools I develop, built for advanced developers. Maintained by Njoh Simplice Junior.
 
 ## Pages
 
-- [Home](https://YOUR-DOMAIN/): overview of the tools
-- [Contact](https://YOUR-DOMAIN/contact): contact form
-- [Legal notice](https://YOUR-DOMAIN/legal): publisher and hosting information
+- [Home](https://nsdev.me/): overview of the tools
+- [Contact](https://nsdev.me/contact): contact form
+- [Legal notice](https://nsdev.me/legal): publisher, hosting and privacy information
+
+## About the author
+
+- [Portfolio](https://heysimplice.com)
+- [GitHub](https://github.com/njoh-simplice)

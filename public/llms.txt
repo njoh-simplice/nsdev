@@ -8,6 +8,10 @@
 - [Contact](https://nsdev.me/contact): contact form
 - [Legal notice](https://nsdev.me/legal): publisher, hosting and privacy information
 
+## Tools
+
+- [nsdev/ui](https://ui.nsdev.me): a component library built on Base UI and Tailwind, fully styled, with your own design tokens
+
 ## About the author
 
 - [Portfolio](https://heysimplice.com)

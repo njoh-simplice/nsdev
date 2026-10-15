@@ -268,11 +268,24 @@ h3 {
   border-radius: var(--radius-card);
   background: var(--bg-elevated);
   box-shadow: 0 0.5rem 1.5rem var(--shadow);
+  transition:
+    margin 0.25s ease,
+    padding 0.25s ease;
+}
+
+/* Hover: the card frame grows by 2px on each side (about 1%), mouse devices only.
+   It grows through margin + padding instead of a scale transform: the content keeps
+   its exact size and position, so text and image stay sharp the whole time. */
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .card:hover {
+    margin: -2px;
+    padding: 14px;
+  }
 }
 
 .card__media {
   width: 100%;
-  aspect-ratio: 16 / 9;
+  aspect-ratio: 1200 / 554; /* same shape as the tool screenshots, so nothing is cropped or padded */
   margin-bottom: 1.5rem;
   border-radius: var(--radius);
   background: var(--border);
@@ -282,7 +295,7 @@ h3 {
 .card__media img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain; /* show the whole screenshot, never crop it */
   display: block;
 }
 
@@ -295,6 +308,11 @@ h3 {
 .card p {
   margin: 0.5rem 0 1.25rem;
   color: var(--text-muted);
+}
+
+/* Buttons line up at the bottom even when descriptions differ in length */
+.card .button {
+  margin-top: auto;
 }
 
 .site-footer {
@@ -575,6 +593,16 @@ h3 {
     opacity 0.7s ease,
     transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1),
     filter 0.7s ease;
+}
+
+/* Cards also animate their hover growth, so it must stay in the reveal transition */
+.js .card.reveal {
+  transition:
+    opacity 0.7s ease,
+    transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1),
+    filter 0.7s ease,
+    margin 0.25s ease,
+    padding 0.25s ease;
 }
 
 .js .reveal--blur {

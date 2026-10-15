@@ -11,9 +11,18 @@ if (revealItems.length) {
         entries
           .filter((entry) => entry.isIntersecting)
           .forEach((entry, i) => {
-            entry.target.style.transitionDelay = i * 120 + "ms";
-            entry.target.classList.add("is-visible");
-            observer.unobserve(entry.target);
+            const el = entry.target;
+            el.style.transitionDelay = i * 120 + "ms";
+            el.classList.add("is-visible");
+            observer.unobserve(el);
+
+            // Drop the stagger delay once revealed, or later hover effects would lag
+            const clearDelay = (event) => {
+              if (event.target !== el) return;
+              el.style.transitionDelay = "";
+              el.removeEventListener("transitionend", clearDelay);
+            };
+            el.addEventListener("transitionend", clearDelay);
           });
       },
       { threshold: 0.15, rootMargin: "0px 0px -8% 0px" },
